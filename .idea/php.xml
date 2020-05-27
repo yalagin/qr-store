@@ -110,6 +110,11 @@
       <path value="$PROJECT_DIR$/vendor/infyomlabs/laravel-generator" />
       <path value="$PROJECT_DIR$/vendor/infyomlabs/adminlte-templates" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/infyomlabs/swagger-generator" />
+      <path value="$PROJECT_DIR$/vendor/swagger-api/swagger-ui" />
+      <path value="$PROJECT_DIR$/vendor/appointer/swaggervel" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
