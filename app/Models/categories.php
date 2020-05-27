@@ -15,13 +15,63 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $active
  * @property integer $excluding_discounts
  * @property integer $product_remark
+ * @SWG\Definition(
+ *      definition="categories",
+ *      required={"name"},
+ *      @SWG\Property(
+ *          property="id",
+ *          description="id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="name",
+ *          description="name",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="description",
+ *          description="description",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="active",
+ *          description="active",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="excluding_discounts",
+ *          description="excluding_discounts",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="product_remark",
+ *          description="product_remark",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="created_at",
+ *          description="created_at",
+ *          type="string",
+ *          format="date-time"
+ *      ),
+ *      @SWG\Property(
+ *          property="updated_at",
+ *          description="updated_at",
+ *          type="string",
+ *          format="date-time"
+ *      )
+ * )
  */
 class categories extends Model
 {
     use SoftDeletes;
 
     public $table = 'categories';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -58,5 +108,5 @@ class categories extends Model
         'name' => 'required|max:255'
     ];
 
-    
+
 }

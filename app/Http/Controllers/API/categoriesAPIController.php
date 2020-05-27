@@ -31,6 +31,34 @@ class categoriesAPIController extends AppBaseController
      *
      * @param Request $request
      * @return Response
+     *
+     * @SWG\Get(
+     *      path="/categories",
+     *      summary="Get a listing of the categories.",
+     *      tags={"categories"},
+     *      description="Get all categories",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @SWG\Items(ref="#/definitions/categories")
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function index(Request $request)
     {
@@ -50,6 +78,40 @@ class categoriesAPIController extends AppBaseController
      * @param CreatecategoriesAPIRequest $request
      *
      * @return Response
+     *
+     * @SWG\Post(
+     *      path="/categories",
+     *      summary="Store a newly created categories in storage",
+     *      tags={"categories"},
+     *      description="Store categories",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="categories that should be stored",
+     *          required=false,
+     *          @SWG\Schema(ref="#/definitions/categories")
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/categories"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function store(CreatecategoriesAPIRequest $request)
     {
@@ -67,6 +129,40 @@ class categoriesAPIController extends AppBaseController
      * @param int $id
      *
      * @return Response
+     *
+     * @SWG\Get(
+     *      path="/categories/{id}",
+     *      summary="Display the specified categories",
+     *      tags={"categories"},
+     *      description="Get categories",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of categories",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/categories"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function show($id)
     {
@@ -88,6 +184,47 @@ class categoriesAPIController extends AppBaseController
      * @param UpdatecategoriesAPIRequest $request
      *
      * @return Response
+     *
+     * @SWG\Put(
+     *      path="/categories/{id}",
+     *      summary="Update the specified categories in storage",
+     *      tags={"categories"},
+     *      description="Update categories",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of categories",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="categories that should be updated",
+     *          required=false,
+     *          @SWG\Schema(ref="#/definitions/categories")
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/categories"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function update($id, UpdatecategoriesAPIRequest $request)
     {
@@ -114,6 +251,40 @@ class categoriesAPIController extends AppBaseController
      * @throws \Exception
      *
      * @return Response
+     *
+     * @SWG\Delete(
+     *      path="/categories/{id}",
+     *      summary="Remove the specified categories from storage",
+     *      tags={"categories"},
+     *      description="Delete categories",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of categories",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function destroy($id)
     {
