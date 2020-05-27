@@ -1,0 +1,4 @@
+GET http://my.test:80/api/v1/categories
+Accept: application/json
+
+###

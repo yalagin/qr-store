@@ -107,6 +107,4 @@ class categories extends Model
     public static $rules = [
         'name' => 'required|max:255'
     ];
-
-
 }

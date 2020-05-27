@@ -15,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return "hello ";
+//    return $request->user();
 });
+Route::get('/test',function (){ return 'tests';});
 
-
-Route::resource('categories', 'categoriesAPIController');
+Route::prefix('v1')->group(function () {
+    Route::resource('categories', 'API\categoriesAPIController');
+});

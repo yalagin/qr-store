@@ -1,10 +1,271 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Product store APIs",
+        "title": "Laravel Generator APIs",
         "version": "1.0.0"
     },
     "basePath": "/api/v1",
-    "paths": {},
-    "definitions": {}
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Get a listing of the categories.",
+                "description": "Get all categories",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Display a listing of the categories.\nGET|HEAD /categories",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Display a listing of the categories.\nGET|HEAD /categories",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/categories"
+                                    }
+                                },
+                                "message": {
+                                    "description": "Display a listing of the categories.\nGET|HEAD /categories",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Store a newly created categories in storage",
+                "description": "Store categories",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "categories that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/categories"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Store a newly created categories in storage.\nPOST /categories",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Store a newly created categories in storage.\nPOST /categories",
+                                    "$ref": "#/definitions/categories"
+                                },
+                                "message": {
+                                    "description": "Store a newly created categories in storage.\nPOST /categories",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Display the specified categories",
+                "description": "Get categories",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of categories",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Display the specified categories.\nGET|HEAD /categories/{id}",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Display the specified categories.\nGET|HEAD /categories/{id}",
+                                    "$ref": "#/definitions/categories"
+                                },
+                                "message": {
+                                    "description": "Display the specified categories.\nGET|HEAD /categories/{id}",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Update the specified categories in storage",
+                "description": "Update categories",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of categories",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "categories that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/categories"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified categories in storage.\nPUT/PATCH /categories/{id}",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified categories in storage.\nPUT/PATCH /categories/{id}",
+                                    "$ref": "#/definitions/categories"
+                                },
+                                "message": {
+                                    "description": "Update the specified categories in storage.\nPUT/PATCH /categories/{id}",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Remove the specified categories from storage",
+                "description": "Delete categories",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of categories",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Remove the specified categories from storage.\nDELETE /categories/{id}",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Remove the specified categories from storage.\nDELETE /categories/{id}",
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "description": "Remove the specified categories from storage.\nDELETE /categories/{id}",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "categories": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "description",
+                    "type": "string"
+                },
+                "active": {
+                    "description": "active",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "excluding_discounts": {
+                    "description": "excluding_discounts",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "product_remark": {
+                    "description": "product_remark",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
 }
