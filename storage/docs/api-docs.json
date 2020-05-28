@@ -279,12 +279,15 @@
                         "schema": {
                             "properties": {
                                 "success": {
+                                    "description": "//consumes={\"multipart/form-data\"},",
                                     "type": "boolean"
                                 },
                                 "data": {
+                                    "description": "//consumes={\"multipart/form-data\"},",
                                     "$ref": "#/definitions/image"
                                 },
                                 "message": {
+                                    "description": "//consumes={\"multipart/form-data\"},",
                                     "type": "string"
                                 }
                             },
@@ -484,7 +487,7 @@
                 },
                 "image_url": {
                     "description": "image_url",
-                    "type": "string"
+                    "type": "file"
                 },
                 "created_at": {
                     "description": "created_at",

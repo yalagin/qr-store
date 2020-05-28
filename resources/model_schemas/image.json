@@ -27,7 +27,7 @@
         "name": "image_url",
         "dbType": "string",
         "htmlType": "file",
-        "validations": "required",
+        "validations": "required|file|image|size:1024|dimensions:max_width=1500,max_height=1500",
         "searchable": true,
         "fillable": true,
         "primary": false,

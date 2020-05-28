@@ -146,7 +146,7 @@ class imageController extends AppBaseController
         }
         $this->imageRepository->deleteImageFromLocalDisk($image);
 
-        $this->imageRepository->delete($id);
+        $image->delete();
 
         Flash::success('Image deleted successfully.');
 

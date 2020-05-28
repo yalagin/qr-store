@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="image_url",
  *          description="image_url",
- *          type="string"
+ *          type="file"
  *      ),
  *      @SWG\Property(
  *          property="created_at",

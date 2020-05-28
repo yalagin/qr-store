@@ -1,4 +1,22 @@
-GET http://my.test:80/api/v1/categories?name=sdfsd
-Accept: application/json
+# curl --location --request POST 'http://my.test:80/api/v1/images'
+#--form 'image_url=./test.png'
+#--form 'name=test'
+POST http://my.test:80/api/v1/images
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="image_url"; filename="test.png"
+
+< ./test.png
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+another one
+--WebAppBoundary--
+
 
 ###
+GET http://my.test:80/api/v1/images
+Accept: application/json
+
+

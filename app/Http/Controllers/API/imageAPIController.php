@@ -69,6 +69,7 @@ class imageAPIController extends AppBaseController
     }
 
     /**
+     *  //consumes={"multipart/form-data"},
      * @param CreateimageAPIRequest $request
      * @return Response
      *
@@ -108,9 +109,7 @@ class imageAPIController extends AppBaseController
      */
     public function store(CreateimageAPIRequest $request)
     {
-        $input = $request->all();
-
-        $image = $this->imageRepository->create($input);
+        $image = $this->imageRepository->createImage($request);
 
         return $this->sendResponse($image->toArray(), 'Image saved successfully');
     }
@@ -222,7 +221,7 @@ class imageAPIController extends AppBaseController
             return $this->sendError('Image not found');
         }
 
-        $image = $this->imageRepository->update($input, $id);
+        $image = $this->imageRepository->updateImage($request, $id, $image);
 
         return $this->sendResponse($image->toArray(), 'image updated successfully');
     }
@@ -273,6 +272,7 @@ class imageAPIController extends AppBaseController
         if (empty($image)) {
             return $this->sendError('Image not found');
         }
+        $this->imageRepository->deleteImageFromLocalDisk($image);
 
         $image->delete();
 
