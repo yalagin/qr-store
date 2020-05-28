@@ -115,6 +115,7 @@
       <path value="$PROJECT_DIR$/vendor/infyomlabs/swagger-generator" />
       <path value="$PROJECT_DIR$/vendor/swagger-api/swagger-ui" />
       <path value="$PROJECT_DIR$/vendor/appointer/swaggervel" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

@@ -23,3 +23,6 @@ Route::get('/test',function (){ return 'tests';});
 Route::prefix('v1')->group(function () {
     Route::resource('categories', 'API\categoriesAPIController');
 });
+
+
+Route::resource('images', 'imageAPIController');

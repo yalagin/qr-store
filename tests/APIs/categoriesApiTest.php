@@ -19,7 +19,7 @@ class categoriesApiTest extends TestCase
 
         $this->response = $this->json(
             'POST',
-            '/api/categories', $categories
+            '/api/v1/categories', $categories
         );
 
         $this->assertApiResponse($categories);
@@ -34,7 +34,7 @@ class categoriesApiTest extends TestCase
 
         $this->response = $this->json(
             'GET',
-            '/api/categories/'.$categories->id
+            '/api/v1/categories/'.$categories->id
         );
 
         $this->assertApiResponse($categories->toArray());
@@ -50,7 +50,7 @@ class categoriesApiTest extends TestCase
 
         $this->response = $this->json(
             'PUT',
-            '/api/categories/'.$categories->id,
+            '/api/v1/categories/'.$categories->id,
             $editedcategories
         );
 
@@ -66,13 +66,13 @@ class categoriesApiTest extends TestCase
 
         $this->response = $this->json(
             'DELETE',
-             '/api/categories/'.$categories->id
+             '/api/v1/categories/'.$categories->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/categories/'.$categories->id
+            '/api/v1/categories/'.$categories->id
         );
 
         $this->response->assertStatus(404);

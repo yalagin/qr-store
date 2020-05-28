@@ -1,4 +1,4 @@
-GET http://my.test:80/api/v1/categories
+GET http://my.test:80/api/v1/categories?name=sdfsd
 Accept: application/json
 
 ###
