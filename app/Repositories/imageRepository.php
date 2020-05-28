@@ -51,7 +51,9 @@ class imageRepository extends BaseRepository
         $extension = $file->getClientOriginalExtension();
 
         $path = 'upload/'.uniqid().'.'.$extension;
-        $img = InterventionImage::make($file)->insert(public_path('logo.JPG'));
+        $img = InterventionImage::make($file)
+//            ->insert(public_path('logo.JPG'))
+        ;
         $img->save(public_path($path));
 
         $input = $request->all();
