@@ -27,7 +27,7 @@
         "name": "description",
         "dbType": "text",
         "htmlType": "textarea",
-        "validations": "",
+        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,

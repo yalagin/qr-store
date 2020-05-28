@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $product_remark
  * @SWG\Definition(
  *      definition="categories",
- *      required={"name"},
+ *      required={"name", "description"},
  *      @SWG\Property(
  *          property="id",
  *          description="id",
@@ -71,7 +71,7 @@ class categories extends Model
     use SoftDeletes;
 
     public $table = 'categories';
-
+    
 
     protected $dates = ['deleted_at'];
 
@@ -105,6 +105,9 @@ class categories extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|max:255'
+        'name' => 'required|max:255',
+        'description' => 'required'
     ];
+
+    
 }
