@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @SWG\Definition(
  *      definition="image",
- *      required={""},
+ *      required={"name", "image_url"},
  *      @SWG\Property(
  *          property="id",
  *          description="id",
@@ -44,7 +44,7 @@ class image extends Model
     use SoftDeletes;
 
     public $table = 'images';
-
+    
 
     protected $dates = ['deleted_at'];
 
@@ -72,8 +72,9 @@ class image extends Model
      * @var array
      */
     public static $rules = [
-
+        'name' => 'required',
+        'image_url' => 'required'
     ];
 
-
+    
 }
