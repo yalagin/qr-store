@@ -54,9 +54,7 @@ class imageController extends AppBaseController
      */
     public function store(CreateimageRequest $request)
     {
-        $input = $request->all();
-
-        $image = $this->imageRepository->create($input);
+        $image = $this->imageRepository->createImage($request);
 
         Flash::success('Image saved successfully.');
 

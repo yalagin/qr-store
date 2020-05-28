@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\image;
 use App\Repositories\BaseRepository;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 /**
  * Class imageRepository
@@ -37,5 +39,24 @@ class imageRepository extends BaseRepository
     public function model()
     {
         return image::class;
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createImage(Request $request){
+        $file = $request->file('image_url');
+        $originalName = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+
+        $path = 'upload/'.uniqid().'.'.$extension;
+        $img = InterventionImage::make($file)->insert(public_path('logo.JPG'));
+        $img->save(public_path($path));
+
+        $input = $request->all();
+        $input['image_url'] = $path;
+
+        return $this->create($input);
     }
 }

@@ -7,7 +7,9 @@
 <!-- Image Url Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('image_url', 'Image Url:') !!}
-    {!! Form::file('image_url') !!}
+    <label class="image__file-upload"> Choose
+        {!! Form::file('image_url',['class'=>'d-none']) !!}
+    </label>
 </div>
 <div class="clearfix"></div>
 
