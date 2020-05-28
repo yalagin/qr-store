@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Image
+            Image test
         </h1>
     </section>
     <div class="content">
