@@ -15,14 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return "hello ";
-//    return $request->user();
+    return $request->user();
 });
-Route::get('/test',function (){ return 'tests';});
 
 Route::prefix('v1')->group(function () {
     Route::resource('categories', 'API\categoriesAPIController');
+    Route::resource('images', 'API\imageAPIController');
 });
 
-
-Route::resource('images', 'imageAPIController');

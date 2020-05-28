@@ -44,7 +44,7 @@ class image extends Model
     use SoftDeletes;
 
     public $table = 'images';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -76,5 +76,14 @@ class image extends Model
         'image_url' => 'required'
     ];
 
-    
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $updateRules = [
+        'name' => 'required',
+    ];
+
+
 }

@@ -423,7 +423,8 @@
     "definitions": {
         "categories": {
             "required": [
-                "name"
+                "name",
+                "description"
             ],
             "properties": {
                 "id": {
@@ -468,7 +469,8 @@
         },
         "image": {
             "required": [
-                ""
+                "name",
+                "image_url"
             ],
             "properties": {
                 "id": {

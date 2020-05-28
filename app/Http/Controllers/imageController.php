@@ -119,7 +119,7 @@ class imageController extends AppBaseController
             return redirect(route('images.index'));
         }
 
-        $image = $this->imageRepository->update($request->all(), $id);
+        $image = $this->imageRepository->updateImage($request, $id, $image);
 
         Flash::success('Image updated successfully.');
 
@@ -131,9 +131,9 @@ class imageController extends AppBaseController
      *
      * @param int $id
      *
+     * @return Response
      * @throws \Exception
      *
-     * @return Response
      */
     public function destroy($id)
     {
@@ -144,6 +144,7 @@ class imageController extends AppBaseController
 
             return redirect(route('images.index'));
         }
+        $this->imageRepository->deleteImageFromLocalDisk($image);
 
         $this->imageRepository->delete($id);
 
