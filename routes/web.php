@@ -24,3 +24,8 @@ Route::get('/home', 'HomeController@index')->middleware('verified')->name('home'
 Route::resource('categories', 'categoriesController');
 
 Route::resource('images', 'imageController');
+
+
+
+
+Route::resource('products', 'ProductsController');

@@ -23,3 +23,8 @@ Route::prefix('v1')->group(function () {
     Route::resource('images', 'API\imageAPIController');
 });
 
+
+
+
+
+Route::resource('products', 'ProductsAPIController');
