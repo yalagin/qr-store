@@ -13,18 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //laravel
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
 
 
 // metronic
-Route::get('/metronic', 'PagesController@index');
+Route::get('/', 'PagesController@index');
 Route::get('/datatables', 'PagesController@datatables');
 Route::get('/ktdatatables', 'PagesController@ktDatatables');
 Route::get('/select2', 'PagesController@select2');
+// Quick search dummy route to display html elements in search dropdown (header search)
+Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
 //admin
 Route::resource('categories', 'categoriesController');
