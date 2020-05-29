@@ -167,6 +167,7 @@ return [
          * my custom
          */
         Intervention\Image\ImageServiceProvider::class,
+        App\Providers\MetronicServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,11 +229,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // custom
+        // infyom
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'Image'     => Intervention\Image\Facades\Image::class,
+
+        // Metronic Aliases
+        'Metronic' => App\Classes\Theme\Metronic::class,
+        'Menu' => App\Classes\Theme\Menu::class,
 
     ],
 
