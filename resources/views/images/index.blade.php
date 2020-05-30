@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layout.default')
 
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">Images</h1>
+        <br>
         <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('images.create') }}">Add New</a>
         </h1>
@@ -19,7 +20,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection

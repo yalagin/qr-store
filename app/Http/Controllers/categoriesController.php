@@ -30,8 +30,9 @@ class categoriesController extends AppBaseController
     public function index(Request $request)
     {
         $categories = $this->categoriesRepository->all();
-
-        return view('categories.index')
+        $page_title = 'Categories';
+        $page_description = 'listing';
+        return view('categories.index',compact('page_title', 'page_description'))
             ->with('categories', $categories);
     }
 
@@ -42,7 +43,9 @@ class categoriesController extends AppBaseController
      */
     public function create()
     {
-        return view('categories.create');
+        $page_title = 'Categories';
+        $page_description = 'creating';
+        return view('categories.create',compact('page_title', 'page_description'));
     }
 
     /**
@@ -80,7 +83,9 @@ class categoriesController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-        return view('categories.show')->with('categories', $categories);
+        $page_title = 'Categories';
+        $page_description = 'Display the specified categories.';
+        return view('categories.show',compact('page_title', 'page_description'))->with('categories', $categories);
     }
 
     /**
@@ -100,7 +105,9 @@ class categoriesController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-        return view('categories.edit')->with('categories', $categories);
+        $page_title = 'Categories';
+        $page_description = 'Edit the specified categories.';
+        return view('categories.edit',compact('page_title', 'page_description'))->with('categories', $categories);
     }
 
     /**

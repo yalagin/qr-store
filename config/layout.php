@@ -112,7 +112,7 @@ return [
 
     // Subheader
     'subheader' => [
-        'display' => true,
+        'display' => false,
         'displayDesc' => true,
         'layout' => 'subheader-v1',
         'fixed' => true,
@@ -143,7 +143,7 @@ return [
     // Aside
     'aside' => [
         'self' => [
-            'theme' => 'dark', // light, dark
+            'theme' => 'light', // light, dark
             'display' => true,
             'fixed' => true,
             'minimize' => [
