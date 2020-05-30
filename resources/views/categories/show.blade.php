@@ -1,6 +1,6 @@
-@extends('layout.default')
+@extends('layout.card')
 
-@section('content')
+@section('card')
     <section class="content-header">
         <h1>
             Categories
@@ -11,8 +11,9 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('categories.show_fields')
-                    <a href="{{ route('categories.index') }}" class="btn btn-default">Back</a>
+                    <br>
                 </div>
+                <a href="{{ route('categories.index') }}" class="btn btn-secondary">Back</a>
             </div>
         </div>
     </div>

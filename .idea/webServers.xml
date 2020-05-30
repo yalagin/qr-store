@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b0119b7d-af10-476c-90a5-63d3077a27f6" name="Plesk" url="https://81.171.10.144:8443/ ">
+        <fileTransfer rootFolder="/var/www/vhosts/palms.nl/poshub.palms.nl" accessType="SFTP" host="81.171.10.144" port="22" sshConfigId="4ecee63b-5993-4185-b8ec-1fb170fd91ce" sshConfig="root@81.171.10.144:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

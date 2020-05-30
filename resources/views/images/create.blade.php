@@ -1,6 +1,6 @@
-@extends('layout.default')
+@extends('layout.card')
 
-@section('content')
+@section('card')
     <section class="content-header">
         <h1>
             Image

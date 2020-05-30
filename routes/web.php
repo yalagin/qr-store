@@ -21,7 +21,6 @@ Route::get('/home', 'HomeController@index')->middleware('verified')->name('home'
 
 
 // metronic
-
 Route::get('/datatables', 'PagesController@datatables');
 Route::get('/ktdatatables', 'PagesController@ktDatatables');
 Route::get('/select2', 'PagesController@select2');
@@ -29,8 +28,8 @@ Route::get('/select2', 'PagesController@select2');
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
 //admin
-Route::get('/dashboard', 'PagesController@index');
 Route::prefix('dashboard')->group(function () {
+    Route::get('/', 'PagesController@index');
     Route::resource('categories', 'categoriesController');
     Route::resource('images', 'imageController');
     Route::resource('products', 'ProductsController');
