@@ -8,7 +8,7 @@ return [
             'title' => 'Dashboard',
             'root' => true,
             'icon' => 'media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => '/',
+            'page' => '/dashboard',
             'new-tab' => false,
         ],
 
@@ -21,7 +21,7 @@ return [
             'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
             'bullet' => 'line',
             'root' => true,
-            'page' => 'images',
+            'page' => 'dashboard/images',
             'new-tab' => false,
         ],
         [
@@ -29,7 +29,7 @@ return [
             'icon' => 'media/svg/icons/Layout/Layout-3d.svg',
             'bullet' => 'line',
             'root' => true,
-            'page' => 'categories',
+            'page' => 'dashboard/categories',
             'new-tab' => false,
         ],
         [
@@ -37,7 +37,7 @@ return [
             'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
             'bullet' => 'line',
             'root' => true,
-            'page' => 'products',
+            'page' => 'dashboard/products',
             'new-tab' => false,
         ],
 
