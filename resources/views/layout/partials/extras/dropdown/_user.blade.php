@@ -30,6 +30,28 @@
 {{-- Nav --}}
 <div class="navi navi-spacer-x-0 pt-5">
     {{-- Item --}}
+    <form id="logout-form" action="{{ url('/logout') }}" method="POST" >
+        @csrf
+
+        <div class="navi-link" type="submit">
+            <div class="navi-icon mr-2">
+                <i class="flaticon2-calendar-3 text-success"></i>
+            </div>
+            <div class="navi-text">
+                <div class="font-weight-bold">
+                    Log out
+                </div>
+                <div class="text-muted">
+                    Login out of application
+                    <span class="label label-light-danger label-inline font-weight-bold">nice</span>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+    {{-- Item --}}
     <a href="#" class="navi-item px-8">
         <div class="navi-link">
             <div class="navi-icon mr-2">
@@ -40,7 +62,7 @@
                     My Profile
                 </div>
                 <div class="text-muted">
-                    Account settings and more
+                    Account settings and more user
                     <span class="label label-light-danger label-inline font-weight-bold">update</span>
                 </div>
             </div>

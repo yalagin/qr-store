@@ -28,7 +28,7 @@ Route::get('/select2', 'PagesController@select2');
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
 //admin
-Route::prefix('dashboard')->group(function () {
+Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/', 'PagesController@index');
     Route::resource('categories', 'categoriesController');
     Route::resource('images', 'imageController');

@@ -16,6 +16,16 @@
                         <p>Before proceeding, please check your email for a verification link.If you did not receive
                             the email,</p>
                         <a href="{{ route('verification.resend') }}">click here to request another'</a>.
+
+                            <a href="{{ route('verification.resend') }}" class="btn btn-default btn-flat"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Sign out
+                            </a>
+                            <form id="logout-form" action="{{ route('verification.resend')  }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+
                     </div>
                 </div>
             </div>

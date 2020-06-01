@@ -80,7 +80,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Signin-->
                 <div class="login-form login-signin">
                     <!--begin::Form-->
-                    <form class="form" novalidate="novalidate" id="kt_login_signin_form" >
+                    <form class="form" method="post"  novalidate="novalidate" id="kt_login_signin_form" action="{{ url('/login') }}" >
+                    @csrf
                         <!--begin::Title-->
                         <div class="pb-13 pt-lg-0 pt-5">
                             <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome to Shop</h3>
@@ -93,8 +94,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
                             <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text"  autocomplete="off"  name="email" value="{{ old('email') }}" />
                             @if ($errors->has('email'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                <span class="fv-plugins-message-container">
+                                    <strong class="fv-help-block">{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -115,7 +116,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--end::Form group-->
                         <!--begin::Action-->
                         <div class="pb-lg-0 pb-5">
-                            <button type="button" id="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+                            <button type="submit" id="kt_login_signin_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
                             <button type="button" class="btn btn-light-primary font-weight-bolder px-8 py-4 my-3 font-size-lg">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/social-icons/google.svg-->

@@ -119,10 +119,13 @@ var KTLogin = function () {
 
     validation = FormValidation.formValidation(KTUtil.getById('kt_login_signin_form'), {
       fields: {
-        username: {
+        email: {
           validators: {
             notEmpty: {
               message: 'Username is required'
+            },
+            emailAddress: {
+              message: 'The value is not a valid email address'
             }
           }
         },
@@ -137,7 +140,8 @@ var KTLogin = function () {
       plugins: {
         trigger: new FormValidation.plugins.Trigger(),
         submitButton: new FormValidation.plugins.SubmitButton(),
-        //defaultSubmit: new FormValidation.plugins.DefaultSubmit(), // Uncomment this line to enable normal button submit after form validation
+        defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+        // Uncomment this line to enable normal button submit after form validation
         bootstrap: new FormValidation.plugins.Bootstrap()
       }
     });

@@ -24,10 +24,10 @@
             </div>
             <div class="d-flex flex-column">
                 <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-					James Jones
+                    {{ Auth::user()->name }}
 				</a>
                 <div class="text-muted mt-1">
-                    Application Developer
+                    Member since {{ Auth::user()->created_at->format('M. Y') }}
                 </div>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
@@ -35,9 +35,18 @@
                             <span class="navi-icon mr-1">
 								{{ Metronic::getSVG("media/svg/icons/Communication/Mail-notification.svg", "svg-icon-lg svg-icon-primary") }}
 							</span>
-                            <span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                            <span class="navi-text text-muted text-hover-primary">{{ Auth::user()->email }}</span>
                         </span>
                     </a>
+                </div>
+                <div class="navi mt-2">
+                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Sign out
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
