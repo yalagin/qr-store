@@ -195,7 +195,7 @@ var KTLogin = function () {
 
     validation = FormValidation.formValidation(form, {
       fields: {
-        fullname: {
+        name: {
           validators: {
             notEmpty: {
               message: 'Username is required'
@@ -219,7 +219,7 @@ var KTLogin = function () {
             }
           }
         },
-        cpassword: {
+        password_confirmation: {
           validators: {
             notEmpty: {
               message: 'The password confirmation is required'
@@ -242,7 +242,10 @@ var KTLogin = function () {
       },
       plugins: {
         trigger: new FormValidation.plugins.Trigger(),
-        bootstrap: new FormValidation.plugins.Bootstrap()
+        bootstrap: new FormValidation.plugins.Bootstrap(),
+        submitButton: new FormValidation.plugins.SubmitButton(),
+        defaultSubmit: new FormValidation.plugins.DefaultSubmit() // Uncomment this line to enable normal button submit after form validation
+
       }
     });
     $('#kt_login_signup_submit').on('click', function (e) {

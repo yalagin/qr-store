@@ -1,87 +1,163 @@
 <!DOCTYPE html>
-<html>
+<!--
+Template Name: Metronic - Bootstrap 4 HTML, React, Angular 9 & VueJS Admin Dashboard Theme
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: https://1.envato.market/EA4JP
+Renew Support: https://1.envato.market/EA4JP
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}" {{ Metronic::printAttrs('html') }} {{ Metronic::printClasses('html') }}>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator</title>
+    <meta charset="utf-8"/>
 
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {{-- Title Section --}}
+    <title>{{ config('app.name') }} | @yield('title', $page_title ?? '')</title>
 
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {{-- Meta Data --}}
+    <meta name="description" content="@yield('page_description', $page_description ?? '')"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="{{ asset('media/logos/favicon.ico') }}"/>
 
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    {{-- Fonts --}}
+    {{ Metronic::getGoogleFontsInclude() }}
 
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
+    {{-- Global Theme Styles (used by all pages) --}}
+    @foreach(config('layout.resources.css') as $style)
+        <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($style)) : asset($style) }}"
+              rel="stylesheet" type="text/css"/>
+    @endforeach
 
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
+    {{-- Layout Themes (used by all pages) --}}
+    @foreach (Metronic::initThemes() as $theme)
+        <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($theme)) : asset($theme) }}"
+              rel="stylesheet" type="text/css"/>
+@endforeach
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+{{-- Includable CSS --}}
+@yield('styles')
 
+<!--begin::Page Custom Styles(used by this page) todo remake-->
+    <link href="/css/pages/login/login-1.css" rel="stylesheet" type="text/css"/>
+    <!--end::Page Custom Styles-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
-    </div>
-
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Enter Email to reset password</p>
-
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body"
+      class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+<!--begin::Main-->
+<div class="d-flex flex-column flex-root">
+    <!--begin::Login-->
+    <div class="login login-1 login-forgot-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+        <!--begin::Aside-->
+        <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #F2C98A;">
+            <!--begin::Aside Top-->
+            <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
+                <!--begin::Aside header-->
+                <a href="#" class="text-center mb-10">
+                    <img src="/media/logos/logo-letter-1.png" class="max-h-70px" alt=""/>
+                </a>
+                <!--end::Aside header-->
+                <!--begin::Aside title-->
+                <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color: #986923;">Discover
+                    Amazing QR-shop
+                    <br/>with great products</h3>
+                <!--end::Aside title-->
             </div>
-        @endif
+            <!--end::Aside Top-->
+            <!--begin::Aside Bottom-->
+            <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center"
+                 style="background-image: url(/media/svg/illustrations/login-visual-1.svg)"></div>
+            <!--end::Aside Bottom-->
+        </div>
+        <!--begin::Aside-->
+        <!--begin::Content-->
+        <div
+            class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+            <!--begin::Content body-->
+            <div class="d-flex flex-column-fluid flex-center">
 
-        <form method="post" action="{{ url('/password/email') }}">
-            @csrf
-
-            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-                @endif
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary pull-right">
-                        <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
-                    </button>
+                <!--end::Signup-->
+                <!--begin::Forgot-->
+                <div class="login-form login-forgot">
+                    <!--begin::Form-->
+                    <form class="form" novalidate="novalidate" id="kt_login_forgot_form" method="post" action="{{ url('/password/email') }}" >
+                    @csrf
+                        <!--begin::Title-->
+                        <div class="pb-13 pt-lg-0 pt-5">
+                            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Forgotten Password
+                                ?</h3>
+                            <p class="text-muted font-weight-bold font-size-h4">Enter your email to reset your
+                                password</p>
+                        </div>
+                        <!--end::Title-->
+                        <!--begin::Form group-->
+                        <div class="form-group">
+                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
+                                   type="email" placeholder="Email" name="email" autocomplete="off"/>
+                            @if ($errors->has('email'))
+                                <span class="fv-plugins-message-container">
+                                    <strong class="fv-help-block">{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <!--end::Form group-->
+                        <!--begin::Form group-->
+                        <div class="form-group d-flex flex-wrap pb-lg-0">
+                            <button type="submit" id="kt_login_forgot_submit"
+                                    class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit
+                            </button>
+                            <a type="button" href="{{ url('/login') }}"
+                                    class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel
+                            </a>
+                        </div>
+                        <!--end::Form group-->
+                    </form>
+                    <!--end::Form-->
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </div>
+                <!--end::Forgot-->
             </div>
-
-        </form>
-
+            <!--end::Content body-->
+            <!--begin::Content footer-->
+            <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
+                <a href="#" class="text-primary font-weight-bolder font-size-h5">Terms</a>
+                <a href="#" class="text-primary ml-10 font-weight-bolder font-size-h5">Plans</a>
+                <a href="#" class="text-primary ml-10 font-weight-bolder font-size-h5">Contact Us</a>
+            </div>
+            <!--end::Content footer-->
+        </div>
+        <!--end::Content-->
     </div>
-    <!-- /.login-box-body -->
+    <!--end::Login-->
 </div>
-<!-- /.login-box -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>var HOST_URL = "{{ route('quick-search') }}";</script>
 
-<!-- AdminLTE App -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
+{{-- Global Config (global config for global JS scripts) --}}
+<script>
+    var KTAppSettings = {!! json_encode(config('layout.js'), JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES) !!};
+</script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+{{-- Global Theme JS Bundle (used by all pages)  --}}
+@foreach(config('layout.resources.js') as $script)
+    <script src="{{ asset($script) }}" type="text/javascript"></script>
+@endforeach
+<!--end::Global Theme Bundle-->
+<!--begin::Page Scripts(used by this page)-->
+<script src="/js/pages/custom/login/login-general.js"></script>
+<!--end::Page Scripts-->
 </body>
+<!--end::Body-->
 </html>
