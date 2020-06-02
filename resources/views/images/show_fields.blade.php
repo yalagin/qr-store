@@ -22,3 +22,15 @@
     <p>{{ $image->updated_at }}</p>
 </div>
 
+<!-- Categories Id Field -->
+<div class="form-group">
+    {!! Form::label('categories_id', 'Categories Id:') !!}
+    <p>{{ $image->categories_id }}</p>
+</div>
+
+<!-- Products Id Field -->
+<div class="form-group">
+    {!! Form::label('products_id', 'Products Id:') !!}
+    <p>{{ $image->products_id }}</p>
+</div>
+

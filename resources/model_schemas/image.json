@@ -13,7 +13,7 @@
     },
     {
         "name": "name",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -25,9 +25,9 @@
     },
     {
         "name": "image_url",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "file",
-        "validations": "required|file|image|size:1024|dimensions:max_width=1500,max_height=1500",
+        "validations": "required|file|image|dimensions:max_width=2000,max_height=2000",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -58,5 +58,37 @@
         "inForm": false,
         "inIndex": false,
         "inView": true
+    },
+    {
+        "name": "categories_id",
+        "dbType": "integer:unsigned:foreign:nullable,categories,id",
+        "htmlType": "text",
+        "validations": "",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "products_id",
+        "dbType": "integer:unsigned:foreign:nullable,products,id",
+        "htmlType": "text",
+        "validations": "",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,categories"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Products"
     }
 ]

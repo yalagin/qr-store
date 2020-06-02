@@ -4,6 +4,8 @@
             <tr>
                 <th>Name</th>
         <th>Image Url</th>
+        <th>Categories Id</th>
+        <th>Products Id</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -12,6 +14,8 @@
             <tr>
                 <td>{{ $image->name }}</td>
             <td>{{ $image->image_url }}</td>
+            <td>{{ $image->categories_id }}</td>
+            <td>{{ $image->products_id }}</td>
                 <td>
                     {!! Form::open(['route' => ['images.destroy', $image->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

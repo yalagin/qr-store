@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="image_url",
  *          description="image_url",
- *          type="file"
+ *          type="string"
  *      ),
  *      @SWG\Property(
  *          property="created_at",
@@ -36,6 +36,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          description="updated_at",
  *          type="string",
  *          format="date-time"
+ *      ),
+ *      @SWG\Property(
+ *          property="categories_id",
+ *          description="categories_id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="products_id",
+ *          description="products_id",
+ *          type="integer",
+ *          format="int32"
  *      )
  * )
  */
@@ -52,7 +64,9 @@ class image extends Model
 
     public $fillable = [
         'name',
-        'image_url'
+        'image_url',
+        'categories_id',
+        'products_id'
     ];
 
     /**
@@ -63,7 +77,9 @@ class image extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'image_url' => 'string'
+        'image_url' => 'string',
+        'categories_id' => 'integer',
+        'products_id' => 'integer'
     ];
 
     /**
@@ -73,17 +89,22 @@ class image extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'image_url' => 'required'
+        'image_url' => 'required|file|image|dimensions:max_width=2000,max_height=2000'
     ];
 
     /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $updateRules = [
-        'name' => 'required',
-    ];
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function categories()
+    {
+        return $this->belongsTo(\App\Models\categories::class);
+    }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function products()
+    {
+        return $this->belongsTo(\App\Models\Products::class);
+    }
 }

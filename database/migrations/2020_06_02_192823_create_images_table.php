@@ -18,8 +18,12 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('image_url')->nullable();
+            $table->integer('categories_id')->unsigned()->nullable();
+            $table->integer('products_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('categories_id')->references('id')->on('categories');
+            $table->foreign('products_id')->references('id')->on('products');
         });
     }
 
