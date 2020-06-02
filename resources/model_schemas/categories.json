@@ -94,5 +94,13 @@
         "inForm": false,
         "inIndex": false,
         "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,image"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,Products"
     }
 ]

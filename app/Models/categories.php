@@ -109,5 +109,19 @@ class categories extends Model
         'description' => 'required'
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function images()
+    {
+        return $this->hasMany(\App\Models\image::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function products()
+    {
+        return $this->belongsToMany(\App\Models\Products::class);
+    }
 }
