@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatecategoriesRequest;
 use App\Http\Requests\UpdatecategoriesRequest;
+use App\Models\image;
 use App\Repositories\categoriesRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -58,8 +59,7 @@ class categoriesController extends AppBaseController
     public function store(CreatecategoriesRequest $request)
     {
         $input = $request->all();
-
-        $categories = $this->categoriesRepository->create($input);
+        $categories = $this->categoriesRepository->createWithImages($input);
 
         Flash::success('Categories saved successfully.');
 

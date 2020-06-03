@@ -128,14 +128,15 @@ abstract class BaseRepository
      *
      * @param array $input
      *
+     * @param bool $save
      * @return Model
      */
-    public function create($input)
+    public function create($input, $save = true)
     {
         $model = $this->model->newInstance($input);
-
-        $model->save();
-
+        if($save) {
+            $model->save();
+        }
         return $model;
     }
 

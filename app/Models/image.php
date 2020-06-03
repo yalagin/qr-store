@@ -88,7 +88,6 @@ class image extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
         'image_url' => 'required|file|image|dimensions:max_width=2000,max_height=2000'
     ];
 

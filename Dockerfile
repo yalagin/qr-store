@@ -24,6 +24,11 @@ RUN apt-get update && apt-get install -y \
     curl
 RUN printf "\n" | pecl install imagick
 RUN docker-php-ext-enable imagick
+
+RUN pecl install redis-5.1.1 \
+    && pecl install xdebug-2.8.1 \
+    && docker-php-ext-enable redis xdebug
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 

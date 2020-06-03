@@ -137,11 +137,13 @@ var KTDropzoneDemo = function () {
          previewNode.remove();
 
          var myDropzone5 = new Dropzone(id, { // Make the whole body a dropzone
-             url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-             parallelUploads: 20,
+             url: uploadUrl, // Set the url for your upload script location
+             paramName: "image_url",
+             parallelUploads: 2,
              maxFilesize: 1, // Max filesize in MB
              previewTemplate: previewTemplate,
              previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+             acceptedFiles: "image/*",
              clickable: id + " .dropzone-select" // Define the element that should be used as click trigger to select files.
          });
 
@@ -149,6 +151,27 @@ var KTDropzoneDemo = function () {
              // Hookup the start button
              $(document).find( id + ' .dropzone-item').css('display', '');
          });
+
+        myDropzone5.on("sending", function(file, xhr, formData) {
+            // add csrf token to image
+            formData.append("_token", csrf_token);
+        });
+
+        myDropzone5.on("success", function(file, xhr) {
+            //on successful upload
+            console.log(xhr);
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'images[]',
+                name: 'images[]',
+                value: xhr.data.id
+            }).appendTo(id);
+        });
+
+        // myDropzone5.on("removedfile", function(file, xhr, formData) {
+        //     // add csrf token to image
+        //     formData.append("_token", csrf_token);
+        // });
 
          // Update the total progress bar
          myDropzone5.on("totaluploadprogress", function(progress) {
@@ -172,8 +195,8 @@ var KTDropzoneDemo = function () {
     return {
         // public functions
         init: function() {
-            demo1();
-            demo2();
+            // demo1();
+            // demo2();
             demo3();
         }
     };
