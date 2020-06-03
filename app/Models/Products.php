@@ -111,7 +111,7 @@ class Products extends Model
     use SoftDeletes;
 
     public $table = 'products';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -176,5 +176,20 @@ class Products extends Model
         'is_deal' => 'boolean'
     ];
 
-    
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function images()
+    {
+        return $this->hasMany(\App\Models\image::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function categories()
+    {
+        return $this->belongsToMany(\App\Models\categories::class);
+    }
 }

@@ -774,7 +774,7 @@
                 },
                 "image_url": {
                     "description": "image_url",
-                    "type": "file"
+                    "type": "string"
                 },
                 "created_at": {
                     "description": "created_at",
@@ -785,6 +785,16 @@
                     "description": "updated_at",
                     "type": "string",
                     "format": "date-time"
+                },
+                "categories_id": {
+                    "description": "categories_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "products_id": {
+                    "description": "products_id",
+                    "type": "integer",
+                    "format": "int32"
                 }
             }
         }

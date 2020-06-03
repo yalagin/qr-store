@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.13.0 on 2020-05-28 17:36:31.
+ * Generated for Laravel 7.13.0 on 2020-06-02 20:24:18.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16724,6 +16724,26 @@ namespace Intervention\Image\Facades {
  
 }
 
+namespace App\Classes\Theme { 
+
+    /**
+     * 
+     *
+     */ 
+    class Metronic {
+         
+    }
+
+    /**
+     * 
+     *
+     */ 
+    class Menu {
+         
+    }
+ 
+}
+
 namespace Barryvdh\Debugbar { 
 
     /**
@@ -20551,6 +20571,10 @@ namespace  {
     class Flash extends \Laracasts\Flash\Flash {}
 
     class Image extends \Intervention\Image\Facades\Image {}
+
+    class Metronic extends \App\Classes\Theme\Metronic {}
+
+    class Menu extends \App\Classes\Theme\Menu {}
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
