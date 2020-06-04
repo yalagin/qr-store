@@ -71,6 +71,7 @@
             </div>
         </div>
         <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+        @include('categories.existed_images')
     </div>
 </div>
 

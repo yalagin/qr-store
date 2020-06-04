@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatecategoriesRequest;
 use App\Http\Requests\UpdatecategoriesRequest;
+use App\Models\categories;
 use App\Models\image;
 use App\Repositories\categoriesRepository;
 use App\Http\Controllers\AppBaseController;
@@ -97,8 +98,7 @@ class categoriesController extends AppBaseController
      */
     public function edit($id)
     {
-        $categories = $this->categoriesRepository->find($id);
-
+        $categories = categories::with('images')->find($id);
         if (empty($categories)) {
             Flash::error('Categories not found');
 
@@ -128,7 +128,8 @@ class categoriesController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-        $categories = $this->categoriesRepository->update($request->all(), $id);
+//        $categories = $this->categoriesRepository->update($request->all(), $id);
+        $categories = $this->categoriesRepository->updateCategory($request->all(), $id, $categories);
 
         Flash::success('Categories updated successfully.');
 

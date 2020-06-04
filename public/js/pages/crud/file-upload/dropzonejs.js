@@ -264,15 +264,24 @@ var KTDropzoneDemo = function () {
       console.log(xhr);
       $('<input>').attr({
         type: 'hidden',
-        id: 'images[]',
+        id: 'images_' + xhr.data.id,
         name: 'images[]',
         value: xhr.data.id
       }).appendTo(id);
-    }); // myDropzone5.on("removedfile", function(file, xhr, formData) {
-    //     // add csrf token to image
-    //     formData.append("_token", csrf_token);
-    // });
-    // Update the total progress bar
+    });
+    myDropzone5.on("removedfile", function (file, xhr, formData) {
+      // add csrf token to image
+      var id = JSON.parse(file.xhr.response).data.id;
+      console.log(id);
+      $("#images_" + id).remove();
+      $.ajax({
+        url: uploadUrl + "/" + id,
+        type: 'DELETE',
+        success: function success(result) {
+          console.log(result);
+        }
+      });
+    }); // Update the total progress bar
 
     myDropzone5.on("totaluploadprogress", function (progress) {
       $(id + " .progress-bar").css('width', progress + "%");

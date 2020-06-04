@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         {{-- Includable JS --}}
         @yield('scripts')
-
+        @yield('additional-scripts')
     </body>
 </html>
 
