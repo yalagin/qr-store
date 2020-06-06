@@ -22,7 +22,7 @@
 		// 1) state will be cleared on each refresh
 		// 2) enable some logs
 		// 3) etc.
-		datatable.debug = false;
+		datatable.debug = true;
 
 		datatable.API = {
 			record: null,

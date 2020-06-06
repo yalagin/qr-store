@@ -1027,7 +1027,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     // 2) enable some logs
     // 3) etc.
 
-    datatable.debug = false;
+    datatable.debug = true;
     datatable.API = {
       record: null,
       value: null,

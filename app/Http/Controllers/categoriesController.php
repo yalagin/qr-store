@@ -31,7 +31,7 @@ class categoriesController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $categories = $this->categoriesRepository->all();
+        $categories = categories::with('images')->get();
         $page_title = 'Categories';
         $page_description = 'listing';
         return view('categories.index',compact('page_title', 'page_description'))
