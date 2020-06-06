@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\categories;
+use App\Models\image;
 use App\Models\Products;
 use App\Repositories\BaseRepository;
 
@@ -50,4 +52,5 @@ class ProductsRepository extends BaseRepository
     {
         return Products::class;
     }
+
 }

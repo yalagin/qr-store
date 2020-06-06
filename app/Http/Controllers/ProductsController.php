@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
+use App\Models\Products;
 use App\Repositories\ProductsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -29,9 +30,10 @@ class ProductsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $products = $this->productsRepository->all();
-
-        return view('products.index')
+        $products = Products::with('images')->get();
+        $page_title = 'Products';
+        $page_description = 'listing';
+        return view('products.index',compact('page_title', 'page_description'))
             ->with('products', $products);
     }
 
@@ -42,7 +44,9 @@ class ProductsController extends AppBaseController
      */
     public function create()
     {
-        return view('products.create');
+        $page_title = 'Products';
+        $page_description = 'creating';
+        return view('products.create',compact('page_title', 'page_description'));
     }
 
     /**
@@ -56,7 +60,7 @@ class ProductsController extends AppBaseController
     {
         $input = $request->all();
 
-        $products = $this->productsRepository->create($input);
+        $products = $this->productsRepository->createWithImages($input);
 
         Flash::success('Products saved successfully.');
 
@@ -80,7 +84,11 @@ class ProductsController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        return view('products.show')->with('products', $products);
+        $page_title = 'Categories';
+        $page_description = 'Display the specified categories.';
+
+        return view('products.show',compact('page_title', 'page_description'))
+            ->with('products', $products);
     }
 
     /**
@@ -92,15 +100,17 @@ class ProductsController extends AppBaseController
      */
     public function edit($id)
     {
-        $products = $this->productsRepository->find($id);
+        $products = Products::with('images')->find($id);
 
         if (empty($products)) {
             Flash::error('Products not found');
 
             return redirect(route('products.index'));
         }
-
-        return view('products.edit')->with('products', $products);
+        $page_title = 'Product';
+        $page_description = 'Edit the specified Product.';
+        return view('products.edit',compact('page_title', 'page_description'))
+            ->with('products', $products);
     }
 
     /**
@@ -121,7 +131,7 @@ class ProductsController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        $products = $this->productsRepository->update($request->all(), $id);
+        $products = $this->productsRepository->updateWithImages($request->all(), $id);
 
         Flash::success('Products updated successfully.');
 

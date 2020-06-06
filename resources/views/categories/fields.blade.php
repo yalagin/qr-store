@@ -85,6 +85,6 @@
 
 @section('scripts')
     <script>const uploadUrl = "{{ route('api.images.store') }}";</script>
-{{--  todo add jwt token  <script>const csrf_token = "{{ csrf_token()}}"</script>--}}
+    <script>const csrf_token = "{{ csrf_token()}}"</script>
     <script src="/js/pages/crud/file-upload/dropzonejs.js"></script>
 @endsection

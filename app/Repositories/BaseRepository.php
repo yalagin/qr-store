@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\image;
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
 
@@ -191,4 +192,48 @@ abstract class BaseRepository
 
         return $model->delete();
     }
+
+    /**
+     * Create model record
+     *
+     * @param array $input
+     *
+     * @return Model
+     */
+    public function createWithImages($input)
+    {
+        $images = [];
+        foreach($input["images"] as $i){
+            $images[$i]= image::find($i);
+        }
+        unset($input["images"]);
+        $model =  $this->create($input);
+        $model->images()->saveMany($images);
+
+        return $model;
+    }
+
+    /**
+     * @param $input
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Model
+     */
+    public function updateWithImages($input, $id)
+    {
+        $images = [];
+        if(isset($input["images"])) {
+            foreach ($input["images"] as $i) {
+                $images[$i] = image::find($i);
+            }
+            unset($input["images"]);
+        }
+
+        $model = $this->update($input,$id);
+        $model->images()->saveMany($images);
+
+        return $model;
+    }
+
+    //todo add on delete model delete all images
+    //todo add on upload images add already existed id to image 
 }

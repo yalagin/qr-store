@@ -255,13 +255,12 @@ var KTDropzoneDemo = function () {
       // Hookup the start button
       $(document).find(id + ' .dropzone-item').css('display', '');
     });
-    myDropzone5.on("sending", function (file, xhr, formData) {
-      // add csrf token to image
-      formData.append("_token", csrf_token);
+    myDropzone5.on("sending", function (file, xhr, formData) {// add csrf token to image
+      // formData.append("_token", csrf_token);
     });
     myDropzone5.on("success", function (file, xhr) {
       //on successful upload
-      console.log(xhr);
+      // console.log(xhr);
       $('<input>').attr({
         type: 'hidden',
         id: 'images_' + xhr.data.id,
@@ -271,14 +270,13 @@ var KTDropzoneDemo = function () {
     });
     myDropzone5.on("removedfile", function (file, xhr, formData) {
       // add csrf token to image
-      var id = JSON.parse(file.xhr.response).data.id;
-      console.log(id);
+      var id = JSON.parse(file.xhr.response).data.id; // console.log(id);
+
       $("#images_" + id).remove();
       $.ajax({
         url: uploadUrl + "/" + id,
         type: 'DELETE',
-        success: function success(result) {
-          console.log(result);
+        success: function success(result) {// console.log(result);
         }
       });
     }); // Update the total progress bar

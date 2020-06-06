@@ -86,7 +86,9 @@ class categoriesController extends AppBaseController
 
         $page_title = 'Categories';
         $page_description = 'Display the specified categories.';
-        return view('categories.show',compact('page_title', 'page_description'))->with('categories', $categories);
+
+        return view('categories.show',compact('page_title', 'page_description'))
+            ->with('categories', $categories);
     }
 
     /**
@@ -107,7 +109,8 @@ class categoriesController extends AppBaseController
 
         $page_title = 'Categories';
         $page_description = 'Edit the specified categories.';
-        return view('categories.edit',compact('page_title', 'page_description'))->with('categories', $categories);
+        return view('categories.edit',compact('page_title', 'page_description'))
+            ->with('categories', $categories);
     }
 
     /**
@@ -129,7 +132,7 @@ class categoriesController extends AppBaseController
         }
 
 //        $categories = $this->categoriesRepository->update($request->all(), $id);
-        $categories = $this->categoriesRepository->updateCategory($request->all(), $id, $categories);
+        $categories = $this->categoriesRepository->updateWithImages($request->all(), $id);
 
         Flash::success('Categories updated successfully.');
 

@@ -42,39 +42,4 @@ class categoriesRepository extends BaseRepository
     {
         return categories::class;
     }
-
-    /**
-     * Create model record
-     *
-     * @param array $input
-     *
-     * @return Model
-     */
-    public function createWithImages($input)
-    {
-        $images = [];
-        foreach($input["images"] as $i){
-            $images[$i]= image::find($i);
-        }
-        unset($input["images"]);
-        /** @var categories $category */
-        $category =  $this->create($input);
-        $category->images()->saveMany($images);
-
-        return $category;
-    }
-
-    public function updateCategory($input, $id, $categories)
-    {
-        $images = [];
-        foreach($input["images"] as $i){
-            $images[$i]= image::find($i);
-        }
-        unset($input["images"]);
-        /** @var categories $category */
-        $category =  $this->update($input,$id);
-        $category->images()->saveMany($images);
-
-        return $category;
-    }
 }
