@@ -203,10 +203,12 @@ abstract class BaseRepository
     public function createWithImages($input)
     {
         $images = [];
-        foreach($input["images"] as $i){
-            $images[$i]= image::find($i);
+        if(isset($input["images"])) {
+            foreach ($input["images"] as $i) {
+                $images[$i] = image::find($i);
+            }
+            unset($input["images"]);
         }
-        unset($input["images"]);
         $model =  $this->create($input);
         $model->images()->saveMany($images);
 

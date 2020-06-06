@@ -46,9 +46,12 @@ class categoriesController extends AppBaseController
      */
     public function create()
     {
+        $products = Products::where('main_product', 1)->get();
+
         $page_title = 'Categories';
         $page_description = 'creating';
-        return view('categories.create',compact('page_title', 'page_description'));
+        return view('categories.create',compact('page_title', 'page_description'))
+            ->with('products', $products);
     }
 
     /**
@@ -61,7 +64,7 @@ class categoriesController extends AppBaseController
     public function store(CreatecategoriesRequest $request)
     {
         $input = $request->all();
-        $categories = $this->categoriesRepository->createWithImages($input);
+        $categories = $this->categoriesRepository->createWithImagesAndProducts($input);
 
         Flash::success('Categories saved successfully.');
 
@@ -77,7 +80,7 @@ class categoriesController extends AppBaseController
      */
     public function show($id)
     {
-        $categories = $this->categoriesRepository->find($id);
+        $categories = categories::with(['images', 'products'])->find($id);
 
         if (empty($categories)) {
             Flash::error('Categories not found');
@@ -101,14 +104,14 @@ class categoriesController extends AppBaseController
      */
     public function edit($id)
     {
-        $categories = categories::with('images')->find($id);
+        $categories = categories::with(['images', 'products'])->find($id);
         if (empty($categories)) {
             Flash::error('Categories not found');
 
             return redirect(route('categories.index'));
         }
 
-        $products = Products::where('active', 1)->get();
+        $products = Products::where('main_product', 1)->get();
 
         $page_title = 'Categories';
         $page_description = 'Edit the specified categories.';
@@ -136,7 +139,8 @@ class categoriesController extends AppBaseController
         }
 
 //        $categories = $this->categoriesRepository->update($request->all(), $id);
-        $categories = $this->categoriesRepository->updateWithImages($request->all(), $id);
+//        $categories = $this->categoriesRepository->updateWithImages($request->all(), $id);
+        $categories = $this->categoriesRepository->updateWithImagesAndProducts($request->all(), $id);
 
         Flash::success('Categories updated successfully.');
 

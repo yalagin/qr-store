@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\categories;
 use App\Models\image;
+use App\Models\Products;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 
@@ -41,5 +42,44 @@ class categoriesRepository extends BaseRepository
     public function model()
     {
         return categories::class;
+    }
+
+    /**
+     * Create model record
+     *
+     * @param array $input
+     *
+     * @return Model
+     */
+    public function createWithImagesAndProducts($input)
+    {
+        $products = [];
+        if(isset($input["products"])) {
+            foreach ($input["products"] as $i) {
+                $products[$i] = Products::find($i);
+            }
+            unset($input["products"]);
+        }
+        /** @var categories $model */
+        $model =  $this->createWithImages($input);
+        $model->products()->saveMany($products);
+
+        return $model;
+    }
+
+    public function updateWithImagesAndProducts(array $input, int $id)
+    {
+        $products = [];
+        if(isset($input["products"])) {
+            foreach ($input["products"] as $i) {
+                $products[$i] = Products::find($i);
+            }
+            unset($input["products"]);
+        }
+        /** @var categories $model */
+        $model = $this->updateWithImages($input,$id);
+        $model->products()->saveMany($products);
+
+        return $model;
     }
 }
