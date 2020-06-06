@@ -13,7 +13,7 @@
     <div class="form-group">
         <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                type="text" placeholder="name" name="name" autocomplete="off" value="{{ old('name') }}"/>
-        @if ($errors->has('name'))
+        @if ($errors->has('name')  && old('agree'))
             <span class="fv-plugins-message-container">
                 <strong class="fv-help-block">>{{ $errors->first('name') }}</strong>
             </span>
@@ -21,11 +21,10 @@
     </div>
     <!--end::Form group-->
     <!--begin::Form group-->
-    <div>{{debug(old()) }}</div>
     <div class="form-group">
         <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                type="email" placeholder="Email" name="email" autocomplete="off" value="{{ old('email') }}"/>
-        @if ($errors->has('email'))
+        @if ($errors->has('email') && old('agree'))
             <span class="fv-plugins-message-container">
                 <strong class="fv-help-block">{{ $errors->first('email') }}</strong>
             </span>
@@ -36,7 +35,7 @@
     <div class="form-group">
         <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                type="password" placeholder="Password" name="password" autocomplete="off"/>
-        @if ($errors->has('password'))
+        @if ($errors->has('password') && old('agree'))
             <span class="fv-plugins-message-container">
                 <strong class="fv-help-block">{{ $errors->first('password') }}</strong>
             </span>
@@ -47,7 +46,7 @@
     <div class="form-group">
         <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
                type="password" placeholder="Confirm password" name="password_confirmation" autocomplete="off"/>
-        @if ($errors->has('password_confirmation'))
+        @if ($errors->has('password_confirmation') && old('agree'))
             <span class="fv-plugins-message-container">
                 <strong class="fv-help-block">{{ $errors->first('password_confirmation') }}</strong>
             </span>
