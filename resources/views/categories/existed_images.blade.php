@@ -1,8 +1,8 @@
 @if ($categories ?? false && $categories->images ?? false)
     @foreach ($categories->images as $image)
         <div class="dropzone dropzone-multi">
-            <div class="dropzone-items">
-                <div class="dropzone-item" style="">
+            <div class="dropzone-items col-lg-4 col-md-9 col-sm-12">
+                <div class="dropzone-item col-lg-4 col-md-9 col-sm-12" style="">
                     <div class="dropzone-file">
                         <div class="dropzone-filename" title="some_image_file_name.jpg">
                             <span data-dz-name="">{{$image->name}}</span>

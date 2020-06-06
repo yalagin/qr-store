@@ -6,20 +6,14 @@
             Categories
         </h1>
    </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($categories, ['route' => ['categories.update', $categories->id], 'method' => 'patch']) !!}
+@include('adminlte-templates::common.errors')
 
-                        @include('categories.fields')
+{!! Form::model($categories, ['route' => ['categories.update', $categories->id], 'method' => 'patch']) !!}
 
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+    @include('categories.fields')
+
+{!! Form::close() !!}
+
 @endsection
 
 

@@ -6,6 +6,7 @@ use App\Http\Requests\CreatecategoriesRequest;
 use App\Http\Requests\UpdatecategoriesRequest;
 use App\Models\categories;
 use App\Models\image;
+use App\Models\Products;
 use App\Repositories\categoriesRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -107,10 +108,13 @@ class categoriesController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
+        $products = Products::where('active', 1)->get();
+
         $page_title = 'Categories';
         $page_description = 'Edit the specified categories.';
         return view('categories.edit',compact('page_title', 'page_description'))
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('products', $products);
     }
 
     /**
