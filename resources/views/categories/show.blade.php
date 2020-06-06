@@ -9,7 +9,7 @@
     <div class="content">
         <div class="box box-primary">
             <div class="box-body">
-                <div class="row" style="padding-left: 20px">
+                <div class="column" style="padding-left: 20px">
                     @include('categories.show_fields')
                     <br>
                 </div>

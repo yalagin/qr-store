@@ -235,5 +235,7 @@ abstract class BaseRepository
     }
 
     //todo add on delete model delete all images
-    //todo add on upload images add already existed id to image 
+    //todo add on upload images add already existed id to image
+    //todo add jwt token and save user id to image and check if user owns this picture before delete image
+    //todo add product to category !
 }
