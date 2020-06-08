@@ -84,7 +84,7 @@
                 <select  class="form-control selectpicker" multiple="multiple" data-actions-box="true" name="products[]">
                     @foreach($products as $product)
                         <option value="{{$product->id}}"
-                                @if(in_array($product->id, $categories->products->map(function ($item) {return $item->id;})->toArray()))
+                                @if(isset($categories) && in_array($product->id, $categories->products->map(function ($item) {return $item->id;})->toArray()))
                                     selected="selected"
                                 @endif
                         >
