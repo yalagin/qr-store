@@ -55,14 +55,12 @@ class categoriesRepository extends BaseRepository
     {
         $products = [];
         if(isset($input["products"])) {
-            foreach ($input["products"] as $i) {
-                $products[$i] = Products::find($i);
-            }
+            $products = $input["products"];
             unset($input["products"]);
         }
         /** @var categories $model */
         $model =  $this->createWithImages($input);
-        $model->products()->saveMany($products);
+        $model->products()->sync($products);
 
         return $model;
     }
@@ -71,14 +69,12 @@ class categoriesRepository extends BaseRepository
     {
         $products = [];
         if(isset($input["products"])) {
-            foreach ($input["products"] as $i) {
-                $products[$i] = Products::find($i);
-            }
+            $products = $input["products"];
             unset($input["products"]);
         }
         /** @var categories $model */
         $model = $this->updateWithImages($input,$id);
-        $model->products()->saveMany($products);
+        $model->products()->sync($products);
 
         return $model;
     }

@@ -67,7 +67,7 @@
 <!-- Ean Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ean', 'Ean:') !!}
-    {!! Form::text('ean', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ean', null, ['class' => 'form-control', "id"=>"kt_maxlength_1", "maxlength"=>"13"]) !!}
 </div>
 
 <!-- 'bootstrap / Toggle Switch Is Receipt Field' -->
@@ -140,8 +140,8 @@
                 </div>
             </div>
         </div>
-        <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
         @include('products.existed_images')
+        <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
     </div>
 </div>
 
@@ -158,4 +158,5 @@
     <script>const uploadUrl = "{{ route('api.images.store') }}";</script>
 {{--    <script>const csrf_token = "{{ csrf_token()}}"</script>--}}
     <script src="/js/pages/crud/file-upload/dropzonejs.js"></script>
+    <script src="/js/pages/crud/forms/widgets/bootstrap-maxlength.js"></script>
 @endsection

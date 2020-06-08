@@ -32,10 +32,7 @@
                                             <span class="navi-icon">
                                                 <i class="flaticon2-list-3"></i>
                                             </span>
-
                                             <span class="navi-text" type="submit" >Delete</span>
-
-{{--                                            {!! Form::button('<span class="navi-text">Delete</span>', ['type' => 'submit',  'onclick' => "return confirm('Are you sure?')"]) !!}--}}
                                         </a>
                                         {!! Form::close() !!}
                                     </li>

@@ -131,7 +131,6 @@ class imageController extends AppBaseController
      *
      * @param int $id
      *
-     * @return Response
      * @throws \Exception
      *
      */
@@ -150,6 +149,6 @@ class imageController extends AppBaseController
 
         Flash::success('Image deleted successfully.');
 
-        return redirect(route('images.index'));
+        return redirect()->back();
     }
 }

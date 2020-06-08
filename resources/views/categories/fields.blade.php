@@ -71,31 +71,38 @@
                 </div>
             </div>
         </div>
-        <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
         @include('categories.existed_images')
+        <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
     </div>
 </div>
 
-
-@isset ($products)
+@if(! $products->isEmpty())
     <div class="form-group row  col-sm-9">
-        <label class="col-form-label text-right col-lg-3 col-sm-12">Select/deselect Products</label>
+        {{Form::label('products', 'Select/deselect Products',['class'=>'col-form-label text-right col-lg-3 col-sm-12'])}}
         <div class="col-lg-4 col-md-9 col-sm-12">
-            <select class="form-control selectpicker" multiple="multiple" data-actions-box="true" name="products[]">
-                @foreach ($products as $product)
-                    <option value="{{$product->id}}">{{$product->name}}</option>
-                @endforeach
-            </select>
+            <label>
+                <select  class="form-control selectpicker" multiple="multiple" data-actions-box="true" name="products[]">
+                    @foreach($products as $product)
+                        <option value="{{$product->id}}"
+                                @if(in_array($product->id, $categories->products->map(function ($item) {return $item->id;})->toArray()))
+                                    selected="selected"
+                                @endif
+                        >
+                            {{$product->name}}
+                        </option>
+                    @endforeach
+                </select>
+            </label>
         </div>
     </div>
 
-@endisset
-
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('categories.index') }}" class="btn btn-secondary">Cancel</a>
+
 </div>
 
 

@@ -6,7 +6,9 @@
             Categories
         </h1>
    </section>
-@include('adminlte-templates::common.errors')
+    @include('adminlte-templates::common.errors')
+
+    @include('flash::message')
 
 {!! Form::model($categories, ['route' => ['categories.update', $categories->id], 'method' => 'patch']) !!}
 
@@ -15,6 +17,3 @@
 {!! Form::close() !!}
 
 @endsection
-
-
-

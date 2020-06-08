@@ -138,13 +138,11 @@ class categoriesController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-//        $categories = $this->categoriesRepository->update($request->all(), $id);
-//        $categories = $this->categoriesRepository->updateWithImages($request->all(), $id);
         $categories = $this->categoriesRepository->updateWithImagesAndProducts($request->all(), $id);
 
         Flash::success('Categories updated successfully.');
 
-        return redirect(route('categories.index'));
+        return redirect(route('categories.show',[$id]));
     }
 
     /**

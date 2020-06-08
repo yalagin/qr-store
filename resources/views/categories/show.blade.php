@@ -16,11 +16,23 @@
                             <br>
                         </div>
                         <a href="{{ route('categories.index') }}" class="btn btn-secondary">Back</a>
+                        <a href="{{ route('categories.edit', [$categories->id]) }}" class="btn btn-primary">Edit</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @if(!$categories->images->isEmpty())
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <h1>
+                    Images
+                </h1>
+                @include('images.table',['images'=> $categories->images])
+            </div>
+        </div>
+    @endif
+    @if(!$categories->products->isEmpty())
     <div class="card card-custom gutter-b">
         <div class="card-body">
             <h1>
@@ -29,4 +41,8 @@
             @include('products.table',['products'=> $categories->products])
         </div>
     </div>
+    @endif
 @endsection
+
+
+
