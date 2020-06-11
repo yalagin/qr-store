@@ -104,6 +104,7 @@ class OptionsDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'id' => new Column(['title' => __('models/options.fields.id'), 'data' => 'id']),
             'name' => new Column(['title' => __('models/options.fields.name'), 'data' => 'name']),
             'input_type' => new Column(['title' => __('models/options.fields.input_type'), 'data' => 'input_type']),
             'min' => new Column(['title' => __('models/options.fields.min'), 'data' => 'min']),

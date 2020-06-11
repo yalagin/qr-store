@@ -28,12 +28,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="min",
  *          description="min",
- *          type="string"
+ *          type="integer"
  *      ),
  *      @SWG\Property(
  *          property="max",
  *          description="max",
- *          type="string"
+ *          type="integer"
  *      ),
  *      @SWG\Property(
  *          property="created_at",
@@ -54,11 +54,8 @@ class Options extends Model
     use SoftDeletes;
 
     public $table = 'options';
-    
 
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'name',
@@ -76,8 +73,8 @@ class Options extends Model
         'id' => 'integer',
         'name' => 'string',
         'input_type' => 'string',
-        'min' => 'string',
-        'max' => 'string'
+        'min' => 'integer',
+        'max' => 'integer'
     ];
 
     /**
@@ -88,9 +85,9 @@ class Options extends Model
     public static $rules = [
         'name' => 'required|min:2',
         'input_type' => 'required',
-        'min' => 'required',
+        'min' => 'required|integer',
         'max' => 'required|integer'
     ];
 
-    
+
 }

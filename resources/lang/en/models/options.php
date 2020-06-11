@@ -5,7 +5,7 @@ return array (
   'plural' => 'Options',
   'fields' =>
   array (
-    'id' => 'Id',
+    'id' => '#',
     'name' => 'Name',
     'input_type' => 'Input Type',
     'min' => 'Min',

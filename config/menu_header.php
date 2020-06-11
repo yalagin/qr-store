@@ -37,6 +37,14 @@ return [
             'page' => 'dashboard/products',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Options',
+            'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/options',
+            'new-tab' => false,
+        ],
     ]
 
 ];
