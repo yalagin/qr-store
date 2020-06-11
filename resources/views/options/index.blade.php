@@ -3,7 +3,8 @@
 
 
 @section('card')
-@include('options.table')
+    @include('flash::message')
+    @include('options.table')
 @endsection
 
 

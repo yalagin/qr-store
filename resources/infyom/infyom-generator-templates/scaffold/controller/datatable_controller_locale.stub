@@ -29,7 +29,9 @@ class $MODEL_NAME$Controller extends AppBaseController
      */
     public function index($MODEL_NAME$DataTable $$MODEL_NAME_CAMEL$DataTable)
     {
-        return $$MODEL_NAME_CAMEL$DataTable->render('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index');
+        $page_title = __('models/$MODEL_NAME_PLURAL_CAMEL$.plural');
+
+        return $$MODEL_NAME_CAMEL$DataTable->render('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index',compact('page_title'));
     }
 
     /**
@@ -39,7 +41,9 @@ class $MODEL_NAME$Controller extends AppBaseController
      */
     public function create()
     {
-        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create');
+        $page_title = __('models/$MODEL_NAME_PLURAL_CAMEL$.plural');
+        $page_description = __('crud.add_new');
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create',compact('page_title','page_description'));
     }
 
     /**
@@ -76,8 +80,9 @@ class $MODEL_NAME$Controller extends AppBaseController
 
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
         }
-
-        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+        $page_title = __('models/$MODEL_NAME_PLURAL_CAMEL$.singular');
+        $page_description = __('crud.detail');
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show',compact('page_title','page_description'))->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
     }
 
     /**
@@ -96,8 +101,9 @@ class $MODEL_NAME$Controller extends AppBaseController
 
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
         }
-
-        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+        $page_title = __('models/$MODEL_NAME_PLURAL_CAMEL$.singular');
+        $page_description = __('crud.edit');
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.edit',compact('page_title','page_description'))->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
     }
 
     /**

@@ -1,19 +1,3 @@
-{{--{!! Form::open(['route' => ['options.destroy', $id], 'method' => 'delete']) !!}--}}
-{{--<div class='btn-group'>--}}
-{{--    <a href="{{ route('options.show', $id) }}" class='btn btn-default btn-xs'>--}}
-{{--        <i class="glyphicon glyphicon-eye-open"></i>--}}
-{{--    </a>--}}
-{{--    <a href="{{ route('options.edit', $id) }}" class='btn btn-default btn-xs'>--}}
-{{--        <i class="glyphicon glyphicon-edit"></i>--}}
-{{--    </a>--}}
-{{--    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [--}}
-{{--        'type' => 'submit',--}}
-{{--        'class' => 'btn btn-danger btn-xs',--}}
-{{--        'onclick' => 'return confirm("'.__('crud.are_you_sure').'")'--}}
-{{--    ]) !!}--}}
-{{--</div>--}}
-{{--{!! Form::close() !!}--}}
-
 {!! Form::open(['route' => ['options.destroy', $id], 'method' => 'delete']) !!}
 <a href="{{ route('options.show', $id) }}" class="btn btn-sm btn-clean btn-icon mr-2" title="Show details">
     <span class="svg-icon svg-icon-md">
@@ -36,7 +20,7 @@
         </svg>
     </span>
 </a>
-<a  class="btn btn-sm btn-clean btn-icon delete-related-option" title="Delete" id="delete-related" >
+<a  class="btn btn-sm btn-clean btn-icon delete-related" title="Delete" id="delete-related" >
     <span class="svg-icon svg-icon-md">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -48,9 +32,8 @@
     </span>
 </a>
 {!! Form::close() !!}
-
 <script>
-    $( ".delete-related-option" ).click(function(e) {
+    $( ".delete-related" ).click(function(e) {
         const element = $( this );
         swal.fire({
             title: "Are you sure?",
@@ -64,59 +47,7 @@
             }
         });
     });
-    $(function () {
-        $(".dataTables_paginate").addClass("d-flex justify-content-between align-items-center flex-wrap");
-        $(".pagination").addClass("d-flex flex-wrap py-2 mr-3");
-        $(".paginate_button").addClass("btn  btn-sm border-0 btn-light mr-2 my-1");
-        $(".paginate_button .active").addClass("btn-hover-primary active mr-2 my-1");
-        $(".pagination:first-child").removeClass("btn-icon");
-
-        //hide original search and translate search form metronic to bundle !
-        $('#dataTableBuilder_filter').hide();
-        var info = $('#dataTableBuilder_info');
-        var length = $('#dataTableBuilder_length');
-        $('#page_title').after(info);
-        // info.after(length)
-        length.css('padding-left', ' 1rem');
-        var a = $('#kt_subheader_search_form');
-        var b = $('#dataTableBuilder_filter').find('input');
-
-        var val = b.val();
-        a.val(val);
-        a.on("input", function (e) {
-            var val = $(this).val();
-            val = val.replace(/[^\w]+/g, "");
-            b.val(val).trigger("change").keydown().keypress().keyup();
-        });
-
-
-        //buttons
-        $('#csv-button').click(function () {
-            $(".buttons-csv").click();
-        });
-        $('#pdf-button').click(function () {
-            $(".buttons-pdf").click();
-        });
-        $('#excel-button').click(function () {
-            $(".buttons-excel").click();
-        })
-        $('#print-button').click(function () {
-            $(".buttons-print").click();
-        })
-        $('#reset-button').click(function () {
-            $(".buttons-reset").click();
-            a.val("");
-        })
-        $('#reload-button').click(function () {
-            $(".buttons-reload").click();
-        })
-        $('#create-button').click(function () {
-            $(".buttons-create").click();
-        })
-
-    });
 </script>
 
-
-
+@include('datatables_helper')
 

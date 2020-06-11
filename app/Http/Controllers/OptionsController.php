@@ -41,7 +41,9 @@ class OptionsController extends AppBaseController
      */
     public function create()
     {
-        return view('options.create');
+        $page_title = __('models/options.singular');
+        $page_description = __('crud.add_new');
+        return view('options.create',compact('page_title','page_description'));
     }
 
     /**
@@ -78,8 +80,9 @@ class OptionsController extends AppBaseController
 
             return redirect(route('options.index'));
         }
-
-        return view('options.show')->with('options', $options);
+        $page_title = __('models/options.singular');
+        $page_description = __('crud.detail');
+        return view('options.show',compact('page_title','page_description'))->with('options', $options);
     }
 
     /**
@@ -98,8 +101,9 @@ class OptionsController extends AppBaseController
 
             return redirect(route('options.index'));
         }
-
-        return view('options.edit')->with('options', $options);
+        $page_title = __('models/options.singular');
+        $page_description = __('crud.edit');
+        return view('options.edit',compact('page_title','page_description'))->with('options', $options);
     }
 
     /**

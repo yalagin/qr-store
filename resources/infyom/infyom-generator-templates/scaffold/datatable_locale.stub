@@ -74,6 +74,21 @@ class $MODEL_NAME$DataTable extends DataTable
                        'className' => 'btn btn-default btn-sm no-corner',
                        'text' => '<i class="fa fa-refresh"></i> ' .__('auth.app.reload').''
                     ],
+                    [
+                        'extend' => 'csv',
+                        'className' => 'btn btn-default btn-sm no-corner d-none',
+                        'text' => '<i class="fa fa-refresh"></i> CSV'
+                    ],
+                    [
+                        'extend' => 'excel',
+                        'className' => 'btn btn-default btn-sm no-corner d-none',
+                        'text' => '<i class="fa fa-refresh"></i> Excel'
+                    ],
+                    [
+                        'extend' => 'pdf',
+                        'className' => 'btn btn-default btn-sm no-corner d-none',
+                        'text' => '<i class="fa fa-refresh"></i> Pdf'
+                    ],
                 ],
                  'language' => [
                    'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json'),
