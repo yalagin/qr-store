@@ -11,3 +11,7 @@
     <a href="{{ route('products.index') }}"><i class="fa fa-edit"></i><span>Products</span></a>
 </li>
 
+<li class="{{ Request::is('options*') ? 'active' : '' }}">
+    <a href="{{ route('options.index') }}"><i class="fa fa-edit"></i><span>@lang('models/options.plural')</span></a>
+</li>
+

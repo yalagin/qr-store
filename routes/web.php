@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 //laravel
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
 
@@ -33,4 +33,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('categories', 'categoriesController');
     Route::resource('images', 'imageController');
     Route::resource('products', 'ProductsController');
+    Route::resource('options', 'OptionsController');
 });
+
+
+

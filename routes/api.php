@@ -22,7 +22,10 @@ Route::prefix('v1')->group(function () {
     Route::resource('categories', 'API\categoriesAPIController');
     Route::resource('images', 'API\imageAPIController');
     Route::resource('products', 'API\ProductsAPIController');
+    Route::resource('options', 'OptionsAPIController');
 });
+
+
 
 
 

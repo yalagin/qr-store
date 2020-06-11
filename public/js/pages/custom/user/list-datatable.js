@@ -106,7 +106,7 @@ var KTAppsUsersListDatatable = function () {
         type: 'remote',
         source: {
           read: {
-            url: HOST_URL + '/api/datatables/demos/default.php'
+            url: HOST_URL + '/options'
           }
         },
         pageSize: 10,

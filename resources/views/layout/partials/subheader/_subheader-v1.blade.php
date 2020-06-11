@@ -4,10 +4,10 @@
     <div class="{{ Metronic::printClasses('subheader-container', false) }} d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
 
 		{{-- Info --}}
-        <div class="d-flex align-items-center flex-wrap mr-1">
+        <div class="d-flex align-items-center flex-wrap mr-1" id="subheader_1">
 
 			{{-- Page Title --}}
-            <h5 class="text-dark font-weight-bold my-2 mr-5">
+            <h5 class="text-dark font-weight-bold my-2 mr-5" id="page_title">
                 {{ @$page_title }}
 
                 @if (isset($page_description) && config('layout.subheader.displayDesc'))
@@ -31,14 +31,14 @@
                     @endforeach
                 </ul>
             @endif
+
+            @stack('page_toolbar_left')
         </div>
 
 		{{-- Toolbar --}}
         <div class="d-flex align-items-center">
 
-            @hasSection('page_toolbar')
-                @section('page_toolbar')
-            @endif
+            @stack('page_toolbar_right')
 
             <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
                 <a href="#" class="btn btn-icon"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

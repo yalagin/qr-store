@@ -40,6 +40,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         {{-- Includable CSS --}}
         @yield('styles')
+        @yield('css')
     </head>
 
     <body {{ Metronic::printAttrs('body') }} {{ Metronic::printClasses('body') }}>
@@ -50,7 +51,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         @include('layout.base._layout')
 
-        <script>var HOST_URL = "{{ route('quick-search') }}";</script>
+        <script>var HOST_URL = "{{ route('index') }}";</script>
 
         {{-- Global Config (global config for global JS scripts) --}}
         <script>
@@ -65,6 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
         {{-- Includable JS --}}
         @yield('scripts')
         @yield('additional-scripts')
+        @stack('scripts')
     </body>
 </html>
 
