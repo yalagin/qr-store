@@ -1,10 +1,8 @@
 @section('css')
     @include('layouts.datatables_css')
 @endsection
-{{--@include('options.dropdown')--}}
 
-
-{!! $dataTable->table(['width' => '100%', 'class' => 'table table-striped table-bordered']) !!}
+{!! $dataTable->table(['width' => '100%', 'class' => 'table table-bordered table-hover table-checkable dataTable no-footer collapsed']) !!}
 
 @push('page_toolbar_right')
     <!--begin::Dropdown-->
@@ -87,15 +85,6 @@
                         <span class="navi-text">Reset</span>
                     </a>
                 </li>
-
-                {{--                <li class="navi-item" id="create-button">--}}
-                {{--                    <a href="#" class="navi-link">--}}
-                {{--                        <span class="navi-icon">--}}
-                {{--                            <i class="la la-plus"></i>--}}
-                {{--                        </span>--}}
-                {{--                        <span class="navi-text">Create new</span>--}}
-                {{--                    </a>--}}
-                {{--                </li>--}}
             </ul>
             <!--end::Navigation-->
         </div>
@@ -130,24 +119,6 @@
         </div>
     </div>
 @endpush
-{{--<div class="dataTables_paginate paging_simple_numbers" id="dataTableBuilder_paginate">--}}
-{{--    <ul class="pagination">--}}
-{{--        <li class="paginate_button previous disabled" id="dataTableBuilder_previous"><a href="#"--}}
-{{--                                                                                        aria-controls="dataTableBuilder"--}}
-{{--                                                                                        data-dt-idx="0" tabindex="0">Previous</a>--}}
-{{--        </li>--}}
-{{--        <li class="paginate_button active"><a href="#" aria-controls="dataTableBuilder" data-dt-idx="1"--}}
-{{--                                              tabindex="0">1</a></li>--}}
-{{--        <li class="paginate_button "><a href="#" aria-controls="dataTableBuilder" data-dt-idx="2" tabindex="0">2</a>--}}
-{{--        </li>--}}
-{{--        <li class="paginate_button "><a href="#" aria-controls="dataTableBuilder" data-dt-idx="3" tabindex="0">3</a>--}}
-{{--        </li>--}}
-{{--        <li class="paginate_button "><a href="#" aria-controls="dataTableBuilder" data-dt-idx="4" tabindex="0">4</a>--}}
-{{--        </li>--}}
-{{--        <li class="paginate_button next" id="dataTableBuilder_next"><a href="#" aria-controls="dataTableBuilder"--}}
-{{--                                                                       data-dt-idx="5" tabindex="0">Next</a></li>--}}
-{{--    </ul>--}}
-{{--</div>--}}
 @push('scripts')
     @include('layouts.datatables_js')
     {!! $dataTable->scripts() !!}
@@ -157,9 +128,6 @@
             $(".pagination").addClass("d-flex flex-wrap py-2 mr-3");
             $(".paginate_button").addClass("btn btn-icon btn-sm border-0 btn-light mr-2 my-1");
             $(".paginate_button .active").addClass("btn-hover-primary active mr-2 my-1");
-
-
-
 
             //hide original search and translate search form metronic to bundle !
             $('#dataTableBuilder_filter').hide();
@@ -178,7 +146,6 @@
                 val = val.replace(/[^\w]+/g, "");
                 b.val(val).trigger("change").keydown().keypress().keyup();
             });
-
 
             //buttons
             $('#csv-button').click(function () {
