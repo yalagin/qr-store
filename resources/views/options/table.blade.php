@@ -2,7 +2,7 @@
     @include('layouts.datatables_css')
 @endsection
 
-{!! $dataTable->table(['width' => '100%', 'class' => 'table table-bordered table-hover table-checkable dataTable no-footer collapsed']) !!}
+{!! $dataTable->table(['width' => '100%', 'class' => 'table  table-hover table-checkable dataTable no-footer collapsed']) !!}
 {{--dropdown--}}
 @push('page_toolbar_right')
     <!--begin::Dropdown-->
