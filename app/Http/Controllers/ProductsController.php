@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProductsDataTable;
+use App\Http\Requests;
 use App\Http\Requests\CreateProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use App\Models\Products;
 use App\Repositories\ProductsRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ProductsController extends AppBaseController
@@ -24,17 +25,14 @@ class ProductsController extends AppBaseController
     /**
      * Display a listing of the Products.
      *
-     * @param Request $request
-     *
+     * @param ProductsDataTable $productsDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ProductsDataTable $productsDataTable)
     {
-        $products = Products::with('images')->get();
-        $page_title = 'Products';
-        $page_description = 'listing';
-        return view('products.index',compact('page_title', 'page_description'))
-            ->with('products', $products);
+        $page_title = __('models/products.plural');
+
+        return $productsDataTable->render('products.index',compact('page_title'));
     }
 
     /**
@@ -44,9 +42,9 @@ class ProductsController extends AppBaseController
      */
     public function create()
     {
-        $page_title = 'Products';
-        $page_description = 'creating';
-        return view('products.create',compact('page_title', 'page_description'));
+        $page_title = __('models/products.plural');
+        $page_description = __('crud.add_new');
+        return view('products.create',compact('page_title','page_description'));
     }
 
     /**
@@ -62,7 +60,7 @@ class ProductsController extends AppBaseController
 
         $products = $this->productsRepository->createWithImages($input);
 
-        Flash::success('Products saved successfully.');
+        Flash::success(__('messages.saved', ['model' => __('models/products.singular')]));
 
         return redirect(route('products.index'));
     }
@@ -70,7 +68,7 @@ class ProductsController extends AppBaseController
     /**
      * Display the specified Products.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -79,22 +77,19 @@ class ProductsController extends AppBaseController
         $products = $this->productsRepository->find($id);
 
         if (empty($products)) {
-            Flash::error('Products not found');
+            Flash::error(__('models/products.singular').' '.__('messages.not_found'));
 
             return redirect(route('products.index'));
         }
-
-        $page_title = 'Categories';
-        $page_description = 'Display the specified categories.';
-
-        return view('products.show',compact('page_title', 'page_description'))
-            ->with('products', $products);
+        $page_title = __('models/products.singular');
+        $page_description = __('crud.detail');
+        return view('products.show',compact('page_title','page_description'))->with('products', $products);
     }
 
     /**
      * Show the form for editing the specified Products.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -103,20 +98,19 @@ class ProductsController extends AppBaseController
         $products = Products::with('images')->find($id);
 
         if (empty($products)) {
-            Flash::error('Products not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/products.singular')]));
 
             return redirect(route('products.index'));
         }
-        $page_title = 'Product';
-        $page_description = 'Edit the specified Product.';
-        return view('products.edit',compact('page_title', 'page_description'))
-            ->with('products', $products);
+        $page_title = __('models/products.singular');
+        $page_description = __('crud.edit');
+        return view('products.edit',compact('page_title','page_description'))->with('products', $products);
     }
 
     /**
      * Update the specified Products in storage.
      *
-     * @param int $id
+     * @param  int              $id
      * @param UpdateProductsRequest $request
      *
      * @return Response
@@ -126,14 +120,14 @@ class ProductsController extends AppBaseController
         $products = $this->productsRepository->find($id);
 
         if (empty($products)) {
-            Flash::error('Products not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/products.singular')]));
 
             return redirect(route('products.index'));
         }
 
         $products = $this->productsRepository->updateWithImages($request->all(), $id);
 
-        Flash::success('Products updated successfully.');
+        Flash::success(__('messages.updated', ['model' => __('models/products.singular')]));
 
         return redirect(route('products.index'));
     }
@@ -141,9 +135,7 @@ class ProductsController extends AppBaseController
     /**
      * Remove the specified Products from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
+     * @param  int $id
      *
      * @return Response
      */
@@ -152,14 +144,14 @@ class ProductsController extends AppBaseController
         $products = $this->productsRepository->find($id);
 
         if (empty($products)) {
-            Flash::error('Products not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/products.singular')]));
 
             return redirect(route('products.index'));
         }
 
         $this->productsRepository->delete($id);
 
-        Flash::success('Products deleted successfully.');
+        Flash::success(__('messages.deleted', ['model' => __('models/products.singular')]));
 
         return redirect(route('products.index'));
     }

@@ -22,7 +22,7 @@
 @section('styles')
     <style>
         .center{
-            padding-left: 4rem;
+            /*padding-left: 4rem;*/
         }
     </style>
 @endsection

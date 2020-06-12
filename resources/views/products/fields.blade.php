@@ -1,30 +1,30 @@
 <!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', __('models/products.fields.name').':') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Main Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('main_description', 'Main Description:') !!}
+    {!! Form::label('main_description', __('models/products.fields.main_description').':') !!}
     {!! Form::textarea('main_description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Additional Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('additional_description', 'Additional Description:') !!}
+    {!! Form::label('additional_description', __('models/products.fields.additional_description').':') !!}
     {!! Form::textarea('additional_description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Minor Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('minor_description', 'Minor Description:') !!}
+    {!! Form::label('minor_description', __('models/products.fields.minor_description').':') !!}
     {!! Form::textarea('minor_description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- 'bootstrap / Toggle Switch Main Product Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('main_product', 'Main Product:') !!}
+    {!! Form::label('main_product', __('models/products.fields.main_product').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('main_product', 0) !!}
         {!! Form::checkbox('main_product', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -34,19 +34,19 @@
 
 <!-- Price Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('price', 'Price:') !!}
+    {!! Form::label('price', __('models/products.fields.price').':') !!}
     {!! Form::number('price', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Vat Code Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('vat_code', 'Vat Code:') !!}
+    {!! Form::label('vat_code', __('models/products.fields.vat_code').':') !!}
     {!! Form::number('vat_code', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- 'bootstrap / Toggle Switch Active Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('active', 'Active:') !!}
+    {!! Form::label('active', __('models/products.fields.active').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('active', 0) !!}
         {!! Form::checkbox('active', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -56,7 +56,7 @@
 
 <!-- 'bootstrap / Toggle Switch Sold Out Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('sold_out', 'Sold Out:') !!}
+    {!! Form::label('sold_out', __('models/products.fields.sold_out').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('sold_out', 0) !!}
         {!! Form::checkbox('sold_out', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -66,13 +66,13 @@
 
 <!-- Ean Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('ean', 'Ean:') !!}
+    {!! Form::label('ean', __('models/products.fields.ean').':') !!}
     {!! Form::text('ean', null, ['class' => 'form-control', "id"=>"kt_maxlength_1", "maxlength"=>"13"]) !!}
 </div>
 
 <!-- 'bootstrap / Toggle Switch Is Receipt Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('is_receipt', 'Is Receipt:') !!}
+    {!! Form::label('is_receipt', __('models/products.fields.is_receipt').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('is_receipt', 0) !!}
         {!! Form::checkbox('is_receipt', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -82,7 +82,7 @@
 
 <!-- 'bootstrap / Toggle Switch Is Kitchen Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('is_kitchen', 'Is Kitchen:') !!}
+    {!! Form::label('is_kitchen', __('models/products.fields.is_kitchen').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('is_kitchen', 0) !!}
         {!! Form::checkbox('is_kitchen', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -92,7 +92,7 @@
 
 <!-- 'bootstrap / Toggle Switch Is Sticker Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('is_sticker', 'Is Sticker:') !!}
+    {!! Form::label('is_sticker', __('models/products.fields.is_sticker').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('is_sticker', 0) !!}
         {!! Form::checkbox('is_sticker', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -102,7 +102,7 @@
 
 <!-- 'bootstrap / Toggle Switch Is Deal Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('is_deal', 'Is Deal:') !!}
+    {!! Form::label('is_deal', __('models/products.fields.is_deal').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('is_deal', 0) !!}
         {!! Form::checkbox('is_deal', 1, null,  ['data-toggle' => 'toggle']) !!}
@@ -150,8 +150,8 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('products.index') }}" class="btn btn-secondary">Cancel</a>
+    {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('products.index') }}" class="btn btn-default">@lang('crud.cancel')</a>
 </div>
 
 @section('scripts')

@@ -1,13 +1,13 @@
 <?php
 
-namespace $NAMESPACE_DATATABLES$;
+namespace App\DataTables;
 
-use $NAMESPACE_MODEL$\$MODEL_NAME$;
+use App\Models\Products;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class $MODEL_NAME$DataTable extends DataTable
+class ProductsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,16 +19,16 @@ class $MODEL_NAME$DataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', '$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.datatables_actions');
+        return $dataTable->addColumn('action', 'products.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\$MODEL_NAME$ $model
+     * @param \App\Models\Products $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query($MODEL_NAME$ $model)
+    public function query(Products $model)
     {
         return $model->newQuery();
     }
@@ -51,27 +51,27 @@ class $MODEL_NAME$DataTable extends DataTable
                 'buttons'   => [
                     [
                        'extend' => 'create',
-                       'className' => 'btn btn-default btn-sm no-corner  d-none',
+                       'className' => 'btn btn-default btn-sm no-corner d-none',
                        'text' => '<i class="fa fa-plus"></i> ' .__('auth.app.create').''
                     ],
                     [
                        'extend' => 'export',
-                       'className' => 'btn btn-default btn-sm no-corner  d-none',
+                       'className' => 'btn btn-default btn-sm no-corner d-none',
                        'text' => '<i class="fa fa-download"></i> ' .__('auth.app.export').''
                     ],
                     [
                        'extend' => 'print',
-                       'className' => 'btn btn-default btn-sm no-corner  d-none',
+                       'className' => 'btn btn-default btn-sm no-corner d-none',
                        'text' => '<i class="fa fa-print"></i> ' .__('auth.app.print').''
                     ],
                     [
                        'extend' => 'reset',
-                       'className' => 'btn btn-default btn-sm no-corner  d-none',
+                       'className' => 'btn btn-default btn-sm no-corner d-none',
                        'text' => '<i class="fa fa-undo"></i> ' .__('auth.app.reset').''
                     ],
                     [
                        'extend' => 'reload',
-                       'className' => 'btn btn-default btn-sm no-corner  d-none',
+                       'className' => 'btn btn-default btn-sm no-corner d-none',
                        'text' => '<i class="fa fa-refresh"></i> ' .__('auth.app.reload').''
                     ],
                     [
@@ -104,7 +104,21 @@ class $MODEL_NAME$DataTable extends DataTable
     protected function getColumns()
     {
         return [
-            $DATATABLE_COLUMNS$
+            'id' => new Column(['title' => __('models/products.fields.id'), 'data' => 'id']),
+            'name' => new Column(['title' => __('models/products.fields.name'), 'data' => 'name']),
+            'main_description' => new Column(['title' => __('models/products.fields.main_description'), 'data' => 'main_description']),
+            'additional_description' => new Column(['title' => __('models/products.fields.additional_description'), 'data' => 'additional_description']),
+            'minor_description' => new Column(['title' => __('models/products.fields.minor_description'), 'data' => 'minor_description']),
+            'main_product' => new Column(['title' => __('models/products.fields.main_product'), 'data' => 'main_product']),
+            'price' => new Column(['title' => __('models/products.fields.price'), 'data' => 'price']),
+            'vat_code' => new Column(['title' => __('models/products.fields.vat_code'), 'data' => 'vat_code']),
+            'active' => new Column(['title' => __('models/products.fields.active'), 'data' => 'active']),
+            'sold_out' => new Column(['title' => __('models/products.fields.sold_out'), 'data' => 'sold_out']),
+            'ean' => new Column(['title' => __('models/products.fields.ean'), 'data' => 'ean']),
+            'is_receipt' => new Column(['title' => __('models/products.fields.is_receipt'), 'data' => 'is_receipt']),
+            'is_kitchen' => new Column(['title' => __('models/products.fields.is_kitchen'), 'data' => 'is_kitchen']),
+            'is_sticker' => new Column(['title' => __('models/products.fields.is_sticker'), 'data' => 'is_sticker']),
+            'is_deal' => new Column(['title' => __('models/products.fields.is_deal'), 'data' => 'is_deal'])
         ];
     }
 
@@ -115,6 +129,6 @@ class $MODEL_NAME$DataTable extends DataTable
      */
     protected function filename()
     {
-        return '$MODEL_NAME_PLURAL_SNAKE$_datatable_' . time();
+        return 'options_datatable_' . time();
     }
 }

@@ -1,23 +1,10 @@
 @extends('layout.card')
 
 @section('card')
-    <section class="content-header">
-        <h1>
-            Products
-        </h1>
-    </section>
-    <div class="content">
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'products.store']) !!}
+@include('adminlte-templates::common.errors')
+{!! Form::open(['route' => 'products.store']) !!}
 
-                        @include('products.fields')
+    @include('products.fields')
 
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+{!! Form::close() !!}
 @endsection
