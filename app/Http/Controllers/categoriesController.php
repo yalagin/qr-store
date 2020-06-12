@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\categoriesDataTable;
+use App\DataTables\ProductsDataTable;
+use App\DataTables\ProductsDependentOncategoriesDataTable;
 use App\Http\Requests\CreatecategoriesRequest;
 use App\Http\Requests\UpdatecategoriesRequest;
 use App\Models\categories;
@@ -9,6 +12,7 @@ use App\Models\image;
 use App\Models\Products;
 use App\Repositories\categoriesRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Repositories\ProductsRepository;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -17,26 +21,29 @@ class categoriesController extends AppBaseController
 {
     /** @var  categoriesRepository */
     private $categoriesRepository;
+    /**
+     * @var ProductsRepository
+     */
+    private $productsRepository;
 
-    public function __construct(categoriesRepository $categoriesRepo)
+    public function __construct(categoriesRepository $categoriesRepo, ProductsRepository $productsRepository)
     {
         $this->categoriesRepository = $categoriesRepo;
+        $this->productsRepository = $productsRepository;
     }
 
     /**
      * Display a listing of the categories.
      *
-     * @param Request $request
-     *
+     * @param categoriesDataTable $categoriesDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(categoriesDataTable $categoriesDataTable)
     {
-        $categories = categories::with('images')->get();
-        $page_title = 'Categories';
-        $page_description = 'listing';
-        return view('categories.index',compact('page_title', 'page_description'))
-            ->with('categories', $categories);
+//        $categories = categories::with('images')->get();
+        $page_title = __('models/categories.plural');
+
+        return $categoriesDataTable->render('categories.index',compact('page_title'));
     }
 
     /**
@@ -46,10 +53,10 @@ class categoriesController extends AppBaseController
      */
     public function create()
     {
-        $products = Products::where('main_product', 1)->get();
+        $products =/* Products::where('main_product', 1)->get()*/[];
 
-        $page_title = 'Categories';
-        $page_description = 'creating';
+        $page_title = __('models/categories.plural');
+        $page_description = __('crud.add_new');
         return view('categories.create',compact('page_title', 'page_description'))
             ->with('products', $products);
     }
@@ -66,7 +73,7 @@ class categoriesController extends AppBaseController
         $input = $request->all();
         $categories = $this->categoriesRepository->createWithImagesAndProducts($input);
 
-        Flash::success('Categories saved successfully.');
+        Flash::success(__('messages.saved', ['model' => __('models/categories.singular')]));
 
         return redirect(route('categories.index'));
     }
@@ -76,46 +83,44 @@ class categoriesController extends AppBaseController
      *
      * @param int $id
      *
+     * @param ProductsDataTable $productsDataTable
      * @return Response
      */
-    public function show($id)
+    public function show($id,ProductsDependentOncategoriesDataTable $productsDataTable)
     {
         $categories = categories::with(['images', 'products'])->find($id);
 
         if (empty($categories)) {
-            Flash::error('Categories not found');
+            Flash::error(__('models/categories.singular').' '.__('messages.not_found'));
 
             return redirect(route('categories.index'));
         }
 
-        $page_title = 'Categories';
-        $page_description = 'Display the specified categories.';
+        $productsDataTable->setCategoryId($id);
 
-        return view('categories.show',compact('page_title', 'page_description'))
-            ->with('categories', $categories);
+        $page_title = __('models/categories.singular');
+        $page_description = __('crud.detail');
+        return $productsDataTable->render('categories.show',compact('page_title','page_description','categories'));
     }
 
     /**
      * Show the form for editing the specified categories.
      *
-     * @param int $id
+     * @param  int $id
      *
-     * @return Response
      */
     public function edit($id)
     {
         $categories = categories::with(['images', 'products'])->find($id);
         if (empty($categories)) {
-            Flash::error('Categories not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
-
-        $products = Products::where('main_product', 1)->get();
-
-        $page_title = 'Categories';
-        $page_description = 'Edit the specified categories.';
-        return view('categories.edit',compact('page_title', 'page_description'))
+        $products =/* Products::where('main_product', 1)->get()*/[];
+        $page_title = __('models/categories.singular');
+        $page_description = __('crud.edit');
+        return view('categories.edit',compact('page_title','page_description'))
             ->with('categories', $categories)
             ->with('products', $products);
     }
@@ -133,16 +138,17 @@ class categoriesController extends AppBaseController
         $categories = $this->categoriesRepository->find($id);
 
         if (empty($categories)) {
-            Flash::error('Categories not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
 
         $categories = $this->categoriesRepository->updateWithImagesAndProducts($request->all(), $id);
 
-        Flash::success('Categories updated successfully.');
+        Flash::success(__('messages.updated', ['model' => __('models/categories.singular')]));
 
-        return redirect(route('categories.show',[$id]));
+        return redirect(route('categories.index'));
+//        return redirect(route('categories.show',[$id]));
     }
 
     /**
@@ -159,14 +165,14 @@ class categoriesController extends AppBaseController
         $categories = $this->categoriesRepository->find($id);
 
         if (empty($categories)) {
-            Flash::error('Categories not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
 
         $this->categoriesRepository->delete($id);
 
-        Flash::success('Categories deleted successfully.');
+        Flash::success(__('messages.deleted', ['model' => __('models/categories.singular')]));
 
         return redirect(route('categories.index'));
     }

@@ -1,9 +1,9 @@
 <?php
 
 return array (
-  'singular' => 'Products',
+  'singular' => 'Product',
   'plural' => 'Products',
-  'fields' => 
+  'fields' =>
   array (
     'id' => 'Id',
     'name' => 'Name',

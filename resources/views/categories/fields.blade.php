@@ -1,38 +1,36 @@
 <!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', __('models/categories.fields.name').':') !!}
     {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 255]) !!}
 </div>
 
 <!-- Description Field -->
-<div class="form-group col-sm-6 ">
-    {!! Form::label('description', 'Description:') !!}
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('description', __('models/categories.fields.description').':') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>"3","id"=> "kt_autosize_1"]) !!}
 </div>
 
 <!-- Active Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('active', 'Active:') !!}
+    {!! Form::label('active', __('models/categories.fields.active').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('active', 0) !!}
         {!! Form::checkbox('active', '1', null) !!}
     </label>
 </div>
 
-
 <!-- Excluding Discounts Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('excluding_discounts', 'Excluding Discounts:') !!}
+    {!! Form::label('excluding_discounts', __('models/categories.fields.excluding_discounts').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('excluding_discounts', 0) !!}
         {!! Form::checkbox('excluding_discounts', '1', null) !!}
     </label>
 </div>
 
-
 <!-- Product Remark Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('product_remark', 'Product Remark:') !!}
+    {!! Form::label('product_remark', __('models/categories.fields.product_remark').':') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('product_remark', 0) !!}
         {!! Form::checkbox('product_remark', '1', null) !!}
@@ -78,8 +76,7 @@
 
 @if(! $products->isEmpty())
     <div class="form-group row  col-sm-9">
-        {{Form::label('products', 'Select/deselect Products',['class'=>'col-form-label text-right col-lg-3 col-sm-12'])}}
-        <div class="col-lg-4 col-md-9 col-sm-12">
+        {{Form::label('products', 'Select/deselect Products',['class'=>'col-form-label text-right '])}}
             <label>
                 <select  class="form-control selectpicker" multiple="multiple" data-actions-box="true" name="products[]">
                     @foreach($products as $product)
@@ -93,17 +90,14 @@
                     @endforeach
                 </select>
             </label>
-        </div>
     </div>
 @endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('categories.index') }}" class="btn btn-secondary">Cancel</a>
-
+    {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('categories.index') }}" class="btn btn-secondary">@lang('crud.cancel')</a>
 </div>
-
 
 @section('scripts')
     <script>const uploadUrl = "{{ route('api.images.store') }}";</script>
