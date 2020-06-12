@@ -2,12 +2,11 @@
 
 @section('card')
 
-    @include('adminlte-templates::common.errors')
+       @include('adminlte-templates::common.errors')
 
-    {!! Form::model($options, ['route' => ['options.update', $options->id], 'method' => 'patch']) !!}
+       {!! Form::model($options, ['route' => ['options.update', $options->id], 'method' => 'patch']) !!}
 
-        @include('options.fields')
+            @include('options.fields')
 
-    {!! Form::close() !!}
-
+       {!! Form::close() !!}
 @endsection

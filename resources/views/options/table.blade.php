@@ -2,7 +2,14 @@
     @include('layouts.datatables_css')
 @endsection
 
-{!! $dataTable->table(['width' => '100%', 'class' => 'table  table-hover table-checkable dataTable no-footer collapsed']) !!}
+{!! $dataTable->table(['width' => '100%', 'class' => 'table table-hover table-checkable dataTable no-footer collapsed']) !!}
+
+@push('scripts')
+    @include('layouts.datatables_js')
+    {!! $dataTable->scripts() !!}
+     @include('datatables_helper')
+@endpush
+
 {{--dropdown--}}
 @push('page_toolbar_right')
     <!--begin::Dropdown-->
@@ -118,9 +125,4 @@
                 </span>
         </div>
     </div>
-@endpush
-@push('scripts')
-    @include('layouts.datatables_js')
-    {!! $dataTable->scripts() !!}
-        @include('datatables_helper')
 @endpush
