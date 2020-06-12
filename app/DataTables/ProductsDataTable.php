@@ -45,7 +45,7 @@ class ProductsDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false, 'title' => __('crud.action')])
             ->parameters([
-                'dom'       => 'Bfrtip',
+                'dom'       => 'Bfrtipl',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
