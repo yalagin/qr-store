@@ -260,7 +260,7 @@ var KTDropzoneDemo = function () {
     });
     myDropzone5.on("success", function (file, xhr) {
       //on successful upload
-      // console.log(xhr);
+      console.log(xhr);
       $('<input>').attr({
         type: 'hidden',
         id: 'images_' + xhr.data.id,
