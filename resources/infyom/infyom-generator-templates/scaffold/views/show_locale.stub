@@ -1,8 +1,0 @@
-@extends('layout.card')
-
-@section('card')
-@include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show_fields')
-<a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-default">
-    @lang('crud.back')
-</a>
-@endsection
