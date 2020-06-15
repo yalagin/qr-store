@@ -15,3 +15,7 @@
     <a href="{{ route('options.index') }}"><i class="fa fa-edit"></i><span>@lang('models/options.plural')</span></a>
 </li>
 
+<li class="{{ Request::is('vats*') ? 'active' : '' }}">
+    <a href="{{ route('vats.index') }}"><i class="fa fa-edit"></i><span>@lang('models/vats.plural')</span></a>
+</li>
+

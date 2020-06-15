@@ -34,7 +34,5 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('images', 'imageController');
     Route::resource('products', 'ProductsController');
     Route::resource('options', 'OptionsController');
+    Route::resource('vats', 'VatController');
 });
-
-
-

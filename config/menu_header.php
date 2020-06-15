@@ -11,7 +11,6 @@ return [
             'page' => '/dashboard',
             'new-tab' => false,
         ],
-
         // Custom
         [
             'section' => 'Initial setup',
@@ -44,6 +43,12 @@ return [
             'page' => 'dashboard/options',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Vat',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/vats',
+            'new-tab' => false,
+        ],
     ]
-
 ];

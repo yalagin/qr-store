@@ -49,6 +49,17 @@ return [
             'new-tab' => false,
         ],
 
+        [
+            'section' => 'Settings',
+        ],
+        [
+            'title' => 'Vat',
+            'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/vats',
+            'new-tab' => false,
+        ],
         // Custom
         [
             'section' => 'For development only!',
