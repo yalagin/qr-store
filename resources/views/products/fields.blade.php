@@ -5,21 +5,21 @@
 </div>
 
 <!-- Main Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6 col-lg-6">
     {!! Form::label('main_description', __('models/products.fields.main_description').':') !!}
-    {!! Form::textarea('main_description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('main_description', null, ['class' => 'form-control','rows'=>"3","id"=> "kt_autosize_1"]) !!}
 </div>
 
 <!-- Additional Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6 col-lg-6">
     {!! Form::label('additional_description', __('models/products.fields.additional_description').':') !!}
-    {!! Form::textarea('additional_description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('additional_description', null, ['class' => 'form-control','rows'=>"3","id"=> "kt_autosize_1"]) !!}
 </div>
 
 <!-- Minor Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6 col-lg-6">
     {!! Form::label('minor_description', __('models/products.fields.minor_description').':') !!}
-    {!! Form::textarea('minor_description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('minor_description', null, ['class' => 'form-control','rows'=>"3","id"=> "kt_autosize_1"]) !!}
 </div>
 
 <!-- 'bootstrap / Toggle Switch Main Product Field' -->
@@ -109,8 +109,8 @@
     </label>
 </div>
 
-<div class="form-group row">
-    <label class="col-lg-3 col-form-label text-lg-right">Upload Images:</label>
+<div class="form-group row col-sm-6">
+    <label class="col-lg-3 col-form-label text-lg-left">Upload Images:</label>
     <div class="col-lg-9">
         <div class="dropzone dropzone-multi" id="kt_dropzone_5">
             <div class="dropzone-panel mb-lg-0 mb-2">
@@ -145,8 +145,24 @@
     </div>
 </div>
 
-
-
+@if($categories && ! $categories->isEmpty())
+    <div class="form-group   col-sm-6">
+        {{Form::label('products', 'Select/deselect Categories',['class'=>'col-form-label text-left '])}}
+        <label>
+            <select  class="form-control selectpicker" multiple="multiple" data-actions-box="true" name="categories[]">
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}"
+                            @if(isset($products) && in_array($category->id, $products->categories->map(function ($item) {return $item->id;})->toArray()))
+                            selected="selected"
+                        @endif
+                    >
+                        {{$category->name}}
+                    </option>
+                @endforeach
+            </select>
+        </label>
+    </div>
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
@@ -159,4 +175,5 @@
 {{--    <script>const csrf_token = "{{ csrf_token()}}"</script>--}}
     <script src="/js/pages/crud/file-upload/dropzonejs.js"></script>
     <script src="/js/pages/crud/forms/widgets/bootstrap-maxlength.js"></script>
+    <script src="/js/pages/crud/forms/widgets/autosize.js"></script>
 @endsection

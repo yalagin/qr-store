@@ -5,7 +5,7 @@
 </div>
 
 <!-- Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6 col-lg-6">
     {!! Form::label('description', __('models/categories.fields.description').':') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>"3","id"=> "kt_autosize_1"]) !!}
 </div>
@@ -38,7 +38,7 @@
 </div>
 
 <div class="form-group row col-sm-6">
-    <label class="col-lg-3 col-form-label text-lg-right">Upload Images:</label>
+    <label class="col-lg-3 col-form-label text-lg-left">Upload Images:</label>
     <div class="col-lg-9">
         <div class="dropzone dropzone-multi" id="kt_dropzone_5">
             <div class="dropzone-panel mb-lg-0 mb-2">

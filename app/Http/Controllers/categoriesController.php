@@ -15,6 +15,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\ProductsRepository;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Collection;
 use Response;
 
 class categoriesController extends AppBaseController
@@ -53,7 +54,7 @@ class categoriesController extends AppBaseController
      */
     public function create()
     {
-        $products =/* Products::where('main_product', 1)->get()*/[];
+        $products =/* Products::where('main_product', 1)->get()*/new Collection();
 
         $page_title = __('models/categories.plural');
         $page_description = __('crud.add_new');
@@ -117,7 +118,7 @@ class categoriesController extends AppBaseController
 
             return redirect(route('categories.index'));
         }
-        $products =/* Products::where('main_product', 1)->get()*/[];
+        $products =/* Products::where('main_product', 1)->get()*/new Collection();
         $page_title = __('models/categories.singular');
         $page_description = __('crud.edit');
         return view('categories.edit',compact('page_title','page_description'))
