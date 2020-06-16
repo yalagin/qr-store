@@ -50,5 +50,12 @@ return [
             'page' => 'dashboard/vats',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Currencies',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/currencies',
+            'new-tab' => false,
+        ],
     ]
 ];

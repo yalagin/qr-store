@@ -19,3 +19,4 @@
     <a href="{{ route('vats.index') }}"><i class="fa fa-edit"></i><span>@lang('models/vats.plural')</span></a>
 </li>
 
+

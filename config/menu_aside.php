@@ -60,6 +60,14 @@ return [
             'page' => 'dashboard/vats',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Currency',
+            'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/currencies',
+            'new-tab' => false,
+        ],
         // Custom
         [
             'section' => 'For development only!',

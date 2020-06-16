@@ -24,4 +24,5 @@ Route::prefix('v1')->group(function () {
     Route::resource('products', 'API\ProductsAPIController');
     Route::resource('options', 'OptionsAPIController');
     Route::resource('vats', 'VatAPIController');
+    
 });

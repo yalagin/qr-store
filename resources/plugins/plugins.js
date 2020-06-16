@@ -162,3 +162,6 @@ require('../metronic/js/vendors/plugins/sweetalert2.init.js');
 
 // JQuery Repeater - Create a repeatable group of input elements: https://github.com/DubFriend/jquery.repeater
 require('jquery.repeater');
+
+window.getSymbolFromCurrency = require('currency-symbol-map')
+window.currencyToSymbolMap = require('currency-symbol-map/map')

@@ -10,6 +10,24 @@
           <excludedPaths>
             <excludedPath path="/node_modules" />
             <excludedPath local="true" path="node_modules" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/api" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/controller_docs" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/docs" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/factories" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/model" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/model_docs" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/routes" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/scaffold" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/seeds" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/test" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/user" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/app_base_controller.stub" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/base_repository.stub" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/home_controller.stub" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/migration.stub" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/README.md" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/repository.stub" />
+            <excludedPath path="/poshub.palms.nl/resources/infyom/infyom-generator-templates/view_service_provider.stub" />
           </excludedPaths>
         </serverdata>
       </paths>

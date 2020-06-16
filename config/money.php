@@ -7,9 +7,9 @@ return [
      |--------------------------------------------------------------------------
      */
     'locale' => config('app.locale', 'en_US'),
-    'defaultCurrency' => config('app.currency', 'USD'),
+    'defaultCurrency' => config('app.currency', 'EUR'),
     'currencies' => [
-        'iso' => 'all',
+        'iso' => ['EUR', 'USD'],
 //        'bitcoin' => 'all',
         'custom' => [
             // 'MY1' => 2,
