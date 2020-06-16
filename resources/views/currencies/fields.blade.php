@@ -3,12 +3,13 @@
     {!! Form::label('currency_symbol', __('models/currencies.fields.currency_symbol').':') !!}
     <select name="currency_symbol" id="currency_symbol" class="form-control">
         @foreach($currencies as $value)
-            <option class="transform-to-symbol" value={{$value}}>{{$value}}</option>
+            <option class="transform-to-symbol" value={{$value}}
+                @if( isset($currency) && $value==$currency->currency_symbol)
+                    selected
+                @endif
+            >{{$value}}</option>
         @endforeach
     </select>
-{{--    {!! Form::select('currency_symbol',--}}
-{{--        $currencies,--}}
-{{--    null, ['class' => 'form-control']) !!}--}}
 </div>
 
 <!-- Position Of Symbol Field -->
@@ -24,28 +25,35 @@
     null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Decimal Symbol Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('decimal_symbol', __('models/currencies.fields.decimal_symbol').':') !!}
+    {!! Form::select('decimal_symbol',[
+        'comma' => ',',
+        'dot' => '.',
+        'space' => ' ',
+        'apostrophe' => '\'',
+        ], null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Decimal Digits Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('decimal_digits', __('models/currencies.fields.decimal_digits').':') !!}
-    {!! Form::select('decimal_digits',
-        [
-        'check-box' => 'check-box',
-        'radio-button' => 'radio-button',
-        'drop-down' => 'drop-down'
-        ],
-    null, ['class' => 'form-control']) !!}
+    {!! Form::select('decimal_digits', range(0, 10),
+isset($currency) ?$currency->decimal_digits : 2
+
+, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Digital Grouping Symbol Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('digital_grouping_symbol', __('models/currencies.fields.digital_grouping_symbol').':') !!}
-    {!! Form::select('digital_grouping_symbol',
-        [
-        'check-box' => 'check-box',
-        'radio-button' => 'radio-button',
-        'drop-down' => 'drop-down'
-        ],
-    null, ['class' => 'form-control']) !!}
+    {!! Form::select('digital_grouping_symbol',  [
+        'space' => ' ',
+        'comma' => ',',
+        'dot' => '.',
+        'apostrophe' => '\'',
+        ], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
@@ -64,4 +72,3 @@
         });
     </script>
 @endpush
-

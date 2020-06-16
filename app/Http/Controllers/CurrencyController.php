@@ -7,9 +7,10 @@ use App\Http\Requests;
 use App\Http\Requests\CreateCurrencyRequest;
 use App\Http\Requests\UpdateCurrencyRequest;
 use App\Repositories\CurrencyRepository;
-use Flash;
-use Response;
 use Cknow\Money\Money;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
 class CurrencyController extends AppBaseController
 {
@@ -37,7 +38,7 @@ class CurrencyController extends AppBaseController
     /**
      * Show the form for creating a new Currency.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -53,7 +54,7 @@ class CurrencyController extends AppBaseController
      *
      * @param CreateCurrencyRequest $request
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|Response
      */
     public function store(CreateCurrencyRequest $request)
     {
@@ -71,7 +72,7 @@ class CurrencyController extends AppBaseController
      *
      * @param  int $id
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|Response
      */
     public function show($id)
     {
@@ -92,7 +93,7 @@ class CurrencyController extends AppBaseController
      *
      * @param  int $id
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -103,9 +104,13 @@ class CurrencyController extends AppBaseController
 
             return redirect(route('currencies.index'));
         }
+        $currencies = Money::getCurrencies();
         $page_title = __('models/currencies.singular');
         $page_description = __('crud.edit');
-        return view('currencies.edit',compact('page_title','page_description'))->with('currency', $currency);
+        return view('currencies.edit',compact('page_title','page_description'))
+            ->with('currency', $currency)
+            ->with('currencies', $currencies)
+            ;
     }
 
     /**

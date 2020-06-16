@@ -20,3 +20,7 @@
 </li>
 
 
+<li class="{{ Request::is('currencies*') ? 'active' : '' }}">
+    <a href="{{ route('currencies.index') }}"><i class="fa fa-edit"></i><span>@lang('models/currencies.plural')</span></a>
+</li>
+

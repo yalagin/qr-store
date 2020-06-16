@@ -35,5 +35,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('products', 'ProductsController');
     Route::resource('options', 'OptionsController');
     Route::resource('vats', 'VatController');
-    
+    Route::resource('currencies', 'CurrencyController');
+
 });
+
+
