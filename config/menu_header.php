@@ -64,5 +64,12 @@ return [
             'page' => 'dashboard/dateTimes',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Edit languages',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => '/languages',
+            'new-tab' => false,
+        ],
     ]
 ];

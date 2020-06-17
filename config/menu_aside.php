@@ -76,6 +76,14 @@ return [
             'page' => 'dashboard/dateTimes',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Edit languages',
+            'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => '/languages',
+            'new-tab' => false,
+        ],
         // Custom
         [
             'section' => 'For development only!',
