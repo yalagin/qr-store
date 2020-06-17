@@ -24,3 +24,7 @@
     <a href="{{ route('currencies.index') }}"><i class="fa fa-edit"></i><span>@lang('models/currencies.plural')</span></a>
 </li>
 
+<li class="{{ Request::is('dateTimes*') ? 'active' : '' }}">
+    <a href="{{ route('dateTimes.index') }}"><i class="fa fa-edit"></i><span>@lang('models/date_times.plural')</span></a>
+</li>
+

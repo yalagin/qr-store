@@ -57,5 +57,12 @@ return [
             'page' => 'dashboard/currencies',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Date Time Format',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/dateTimes',
+            'new-tab' => false,
+        ],
     ]
 ];

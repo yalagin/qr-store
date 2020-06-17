@@ -68,6 +68,14 @@ return [
             'page' => 'dashboard/currencies',
             'new-tab' => false,
         ],
+        [
+            'title' => 'Date Time Format',
+            'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
+            'bullet' => 'line',
+            'root' => true,
+            'page' => 'dashboard/dateTimes',
+            'new-tab' => false,
+        ],
         // Custom
         [
             'section' => 'For development only!',

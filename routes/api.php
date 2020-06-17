@@ -25,7 +25,5 @@ Route::prefix('v1')->group(function () {
     Route::resource('options', 'OptionsAPIController');
     Route::resource('vats', 'VatAPIController');
     Route::resource('currencies', 'CurrencyAPIController');
-
+    Route::resource('date-times', 'DateTimeAPIController');
 });
-
-
