@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'flag'         => 'media/svg/flags/226-united-states.svg',
+    'flag'         => 'media/svg/flags/237-netherlands.svg',
     'add_new'      => 'Add New',
     'cancel'       => 'Cancel',
     'save'         => 'Save',

@@ -27,6 +27,9 @@ Route::get('/select2', 'PagesController@select2');
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
+
+//lang
+Route::get('lang/{locale}', 'LocalizationController@index');
 //admin
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/', 'PagesController@index');

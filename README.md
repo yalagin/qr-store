@@ -11,4 +11,3 @@
 website is here 
 
     /var/www/vhosts/palms.nl/poshub.palms.nl
-
