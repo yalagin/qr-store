@@ -1,8 +1,8 @@
 <?php
 
 return array (
-  'singular' => 'Vat',
-  'plural' => 'Vats',
+  'singular' => 'VAT',
+  'plural' => 'VAT',
   'fields' => 
   array (
     'id' => 'Id',

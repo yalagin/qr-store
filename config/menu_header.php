@@ -44,7 +44,7 @@ return [
             'new-tab' => false,
         ],
         [
-            'title' => 'Vat',
+            'title' => 'VAT',
             'bullet' => 'line',
             'root' => true,
             'page' => 'dashboard/vats',

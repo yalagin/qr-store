@@ -53,7 +53,7 @@ return [
             'section' => 'Settings',
         ],
         [
-            'title' => 'Vat',
+            'title' => 'VAT',
             'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
             'bullet' => 'line',
             'root' => true,
