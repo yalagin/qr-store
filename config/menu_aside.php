@@ -77,11 +77,11 @@ return [
             'new-tab' => false,
         ],
         [
-            'title' => 'Edit languages',
+            'title' => 'Edit translations',
             'icon' => 'media/svg/icons/Layout/Layout-grid.svg',
             'bullet' => 'line',
             'root' => true,
-            'page' => '/languages',
+            'page' => '/translations',
             'new-tab' => false,
         ],
         // Custom

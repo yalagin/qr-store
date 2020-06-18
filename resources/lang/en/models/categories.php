@@ -3,7 +3,7 @@
 return array (
   'singular' => 'Category',
   'plural' => 'Categories',
-  'fields' =>
+  'fields' => 
   array (
     'id' => 'Id',
     'name' => 'Name',

@@ -65,10 +65,10 @@ return [
             'new-tab' => false,
         ],
         [
-            'title' => 'Edit languages',
+            'title' => 'Edit translations',
             'bullet' => 'line',
             'root' => true,
-            'page' => '/languages',
+            'page' => '/translations',
             'new-tab' => false,
         ],
     ]
