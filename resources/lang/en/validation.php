@@ -146,6 +146,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        '0'=>'no',
+        '1'=>'yes'
+    ],
 
 ];
