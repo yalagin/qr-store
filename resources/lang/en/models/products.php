@@ -7,6 +7,7 @@ return array (
   array (
     'id' => 'Id',
     'name' => 'Name',
+    'article_number' => 'Article Number',
     'main_description' => 'Main Description',
     'additional_description' => 'Additional Description',
     'minor_description' => 'Minor Description',

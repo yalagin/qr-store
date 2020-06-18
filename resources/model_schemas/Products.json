@@ -2,14 +2,26 @@
     {
         "name": "id",
         "dbType": "increments",
-        "htmlType": null,
-        "validations": null,
-        "searchable": false,
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
         "fillable": false,
         "primary": true,
         "inForm": false,
-        "inIndex": false,
-        "inView": false
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "article_number",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required|unique:products",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "name",
@@ -182,8 +194,8 @@
     {
         "name": "created_at",
         "dbType": "timestamp",
-        "htmlType": null,
-        "validations": null,
+        "htmlType": "",
+        "validations": "",
         "searchable": false,
         "fillable": false,
         "primary": false,
@@ -194,8 +206,8 @@
     {
         "name": "updated_at",
         "dbType": "timestamp",
-        "htmlType": null,
-        "validations": null,
+        "htmlType": "",
+        "validations": "",
         "searchable": false,
         "fillable": false,
         "primary": false,

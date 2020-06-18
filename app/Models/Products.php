@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @SWG\Definition(
  *      definition="Products",
- *      required={"name", "price", "vat_code", "ean"},
+ *      required={"article_number", "name", "price", "vat_code", "ean"},
  *      @SWG\Property(
  *          property="id",
  *          description="id",
  *          type="integer",
  *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="article_number",
+ *          description="article_number",
+ *          type="string"
  *      ),
  *      @SWG\Property(
  *          property="name",
@@ -118,6 +123,7 @@ class Products extends Model
 
 
     public $fillable = [
+        'article_number',
         'name',
         'main_description',
         'additional_description',
@@ -141,6 +147,7 @@ class Products extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'article_number' => 'string',
         'name' => 'string',
         'main_description' => 'string',
         'additional_description' => 'string',
@@ -163,6 +170,7 @@ class Products extends Model
      * @var array
      */
     public static $rules = [
+        'article_number' => 'required|unique:products',
         'name' => 'required',
         'main_product' => 'boolean',
         'price' => 'required|integer',

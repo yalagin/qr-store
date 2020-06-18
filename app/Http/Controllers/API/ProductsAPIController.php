@@ -65,7 +65,10 @@ class ProductsAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse($products->toArray(), 'Products retrieved successfully');
+        return $this->sendResponse(
+            $products->toArray(),
+            __('messages.retrieved', ['model' => __('models/products.plural')])
+        );
     }
 
     /**
@@ -112,7 +115,10 @@ class ProductsAPIController extends AppBaseController
 
         $products = $this->productsRepository->create($input);
 
-        return $this->sendResponse($products->toArray(), 'Products saved successfully');
+        return $this->sendResponse(
+            $products->toArray(),
+            __('messages.saved', ['model' => __('models/products.singular')])
+        );
     }
 
     /**
@@ -159,10 +165,15 @@ class ProductsAPIController extends AppBaseController
         $products = $this->productsRepository->find($id);
 
         if (empty($products)) {
-            return $this->sendError('Products not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/products.singular')])
+            );
         }
 
-        return $this->sendResponse($products->toArray(), 'Products retrieved successfully');
+        return $this->sendResponse(
+            $products->toArray(),
+            __('messages.retrieved', ['model' => __('models/products.singular')])
+        );
     }
 
     /**
@@ -219,12 +230,17 @@ class ProductsAPIController extends AppBaseController
         $products = $this->productsRepository->find($id);
 
         if (empty($products)) {
-            return $this->sendError('Products not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/products.singular')])
+            );
         }
 
         $products = $this->productsRepository->update($input, $id);
 
-        return $this->sendResponse($products->toArray(), 'Products updated successfully');
+        return $this->sendResponse(
+            $products->toArray(),
+            __('messages.updated', ['model' => __('models/products.singular')])
+        );
     }
 
     /**
@@ -271,11 +287,16 @@ class ProductsAPIController extends AppBaseController
         $products = $this->productsRepository->find($id);
 
         if (empty($products)) {
-            return $this->sendError('Products not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/products.singular')])
+            );
         }
 
         $products->delete();
 
-        return $this->sendSuccess('Products deleted successfully');
+        return $this->sendResponse(
+            $id,
+            __('messages.deleted', ['model' => __('models/products.singular')])
+        );
     }
 }

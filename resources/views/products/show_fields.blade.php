@@ -1,3 +1,9 @@
+<!-- Article Number Field -->
+<div class="form-group">
+    {!! Form::label('article_number', __('models/products.fields.article_number').':') !!}
+    <p>{{ $products->article_number }}</p>
+</div>
+
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', __('models/products.fields.name').':') !!}

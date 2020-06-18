@@ -1,3 +1,11 @@
+<!-- Article Number Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('article_number', __('models/products.fields.article_number').':') !!}
+    {!! Form::text('article_number', null, ['class' => 'form-control','rows'=>"3","id"=> "kt_autosize_1"]) !!}
+</div>
+<!-- dont forget to add <script src="/js/pages/crud/forms/widgets/autosize.js"></script> -->
+
+
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', __('models/products.fields.name').':') !!}
@@ -170,10 +178,11 @@
     <a href="{{ route('products.index') }}" class="btn btn-default">@lang('crud.cancel')</a>
 </div>
 
-@section('scripts')
+@push('scripts')
     <script>const uploadUrl = "{{ route('api.images.store') }}";</script>
 {{--    <script>const csrf_token = "{{ csrf_token()}}"</script>--}}
     <script src="/js/pages/crud/file-upload/dropzonejs.js"></script>
     <script src="/js/pages/crud/forms/widgets/bootstrap-maxlength.js"></script>
     <script src="/js/pages/crud/forms/widgets/autosize.js"></script>
-@endsection
+
+@endpush

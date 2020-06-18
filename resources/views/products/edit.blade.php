@@ -3,6 +3,7 @@
 @section('card')
 
        @include('adminlte-templates::common.errors')
+       @include('flash::message')
 
        {!! Form::model($products, ['route' => ['products.update', $products->id], 'method' => 'patch']) !!}
 
