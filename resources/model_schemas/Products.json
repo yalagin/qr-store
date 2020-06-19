@@ -133,9 +133,9 @@
     },
     {
         "name": "ean",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "text",
-        "validations": "required|digits:13",
+        "validations": "digits:13",
         "searchable": true,
         "fillable": true,
         "primary": false,

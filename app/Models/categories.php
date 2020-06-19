@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\YesOrNo;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -94,7 +95,7 @@ class categories extends Model
         'id' => 'integer',
         'name' => 'string',
         'description' => 'string',
-        'active' => 'integer',
+        'active' => YesOrNo::class,
         'excluding_discounts' => 'integer',
         'product_remark' => 'integer'
     ];

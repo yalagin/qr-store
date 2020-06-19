@@ -147,8 +147,7 @@ return [
     */
 
     'attributes' => [
-        '0'=>'no',
-        '1'=>'yes'
+        'yes'=>'Yes',
+        'no'=>'No',
     ],
-
 ];

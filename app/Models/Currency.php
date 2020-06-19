@@ -59,7 +59,7 @@ class Currency extends Model
     use SoftDeletes;
 
     public $table = 'currencies';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -99,6 +99,4 @@ class Currency extends Model
         'decimal_digits' => 'required',
         'digital_grouping_symbol' => 'required'
     ];
-
-    
 }

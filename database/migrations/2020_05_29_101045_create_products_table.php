@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('vat_code');
             $table->smallInteger('active', false, true);
             $table->smallInteger('sold_out', false, true);
-            $table->string('ean');
+            $table->string('ean')->nullable();
             $table->smallInteger('is_receipt', false, true);
             $table->smallInteger('is_kitchen', false, true);
             $table->smallInteger('is_sticker', false, true);

@@ -1,7 +1,7 @@
 @extends('layout.card')
 
 @section('card')
-@include('adminlte-templates::common.errors')
+@include('common.errors')
 {!! Form::open(['route' => 'options.store']) !!}
 
     @include('options.fields')

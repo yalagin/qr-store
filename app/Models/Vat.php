@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\YesOrNo;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -61,7 +62,7 @@ class Vat extends Model
     use SoftDeletes;
 
     public $table = 'vats';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -85,8 +86,8 @@ class Vat extends Model
         'code' => 'string',
         'Description' => 'string',
         'Percentage' => 'string',
-        'is_sales' => 'integer',
-        'is_purchase' => 'integer'
+        'is_sales' => YesOrNo::class,
+        'is_purchase' => YesOrNo::class
     ];
 
     /**
@@ -99,6 +100,4 @@ class Vat extends Model
         'Description' => 'required',
         'Percentage' => 'required'
     ];
-
-    
 }

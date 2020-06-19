@@ -2,7 +2,7 @@
 
 @section('card')
 
-       @include('adminlte-templates::common.errors')
+       @include('common.errors')
 
        {!! Form::model($options, ['route' => ['options.update', $options->id], 'method' => 'patch']) !!}
 

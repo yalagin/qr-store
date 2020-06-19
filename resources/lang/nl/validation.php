@@ -182,5 +182,7 @@ return [
         'title'                 => 'titel',
         'username'              => 'gebruikersnaam',
         'year'                  => 'jaar',
+        'yes'                   => 'Ja',
+        'no'                    => 'Nee',
     ],
 ];

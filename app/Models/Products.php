@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\YesOrNo;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -158,10 +159,10 @@ class Products extends Model
         'active' => 'integer',
         'sold_out' => 'integer',
         'ean' => 'string',
-        'is_receipt' => 'integer',
-        'is_kitchen' => 'integer',
-        'is_sticker' => 'integer',
-        'is_deal' => 'integer'
+        'is_receipt' => YesOrNo::class,
+        'is_kitchen' => YesOrNo::class,
+        'is_sticker' => YesOrNo::class,
+        'is_deal' => YesOrNo::class
     ];
 
     /**
@@ -177,7 +178,7 @@ class Products extends Model
         'vat_code' => 'required|integer',
         'active' => 'boolean',
         'sold_out' => 'boolean',
-        'ean' => 'required|digits:13',
+        'ean' => 'nullable|digits:13',
         'is_receipt' => 'boolean',
         'is_kitchen' => 'boolean',
         'is_sticker' => 'boolean',
