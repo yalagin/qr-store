@@ -131,7 +131,6 @@ class Products extends Model
         'minor_description',
         'main_product',
         'price',
-        'vat_code',
         'active',
         'sold_out',
         'ean',
@@ -171,11 +170,11 @@ class Products extends Model
      * @var array
      */
     public static $rules = [
-        'article_number' => 'required|unique:products',
+        'article_number' => 'required|unique:products,article_number',
         'name' => 'required',
         'main_product' => 'boolean',
         'price' => 'required|integer',
-        'vat_code' => 'required|integer',
+        'vat' => 'required',
         'active' => 'boolean',
         'sold_out' => 'boolean',
         'ean' => 'nullable|digits:13',
@@ -200,5 +199,13 @@ class Products extends Model
     public function categories()
     {
         return $this->belongsToMany(\App\Models\categories::class);
+    }
+
+    /**
+     * Get the vat that owns the product.
+     */
+    public function vat()
+    {
+        return $this->belongsTo('App\Models\Vat');
     }
 }

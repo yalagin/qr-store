@@ -8,6 +8,7 @@ use App\Http\Requests\CreateProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use App\Models\categories;
 use App\Models\Products;
+use App\Models\Vat;
 use App\Repositories\ProductsRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -45,9 +46,12 @@ class ProductsController extends AppBaseController
     public function create()
     {
         $categories = categories::all();
+        $vats = Vat::all();
+
         $page_title = __('models/products.plural');
         $page_description = __('crud.add_new');
-        return view('products.create',compact('page_title','page_description','categories'));
+
+        return view('products.create',compact('page_title','page_description', 'categories', 'vats'));
     }
 
     /**
@@ -61,7 +65,7 @@ class ProductsController extends AppBaseController
     {
         $input = $request->all();
 
-        $products = $this->productsRepository->createWithImagesAndCategories($input);
+        $products = $this->productsRepository->createWithRelationships($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/products.singular')]));
 
@@ -84,8 +88,10 @@ class ProductsController extends AppBaseController
 
             return redirect(route('products.index'));
         }
+
         $page_title = __('models/products.singular');
         $page_description = __('crud.detail');
+
         return view('products.show',compact('page_title','page_description'))->with('products', $products);
     }
 
@@ -94,20 +100,25 @@ class ProductsController extends AppBaseController
      *
      * @param  int $id
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $products = Products::with('images','categories')->find($id);
-        $categories = categories::all();
+        $products = Products::with('images','categories','vat')->find($id);
+
         if (empty($products)) {
             Flash::error(__('messages.not_found', ['model' => __('models/products.singular')]));
 
             return redirect(route('products.index'));
         }
+
+        $categories = categories::all();
+        $vats = Vat::all();
+
         $page_title = __('models/products.singular');
         $page_description = __('crud.edit');
-        return view('products.edit',compact('page_title','page_description','categories'))->with('products', $products);
+
+        return view('products.edit',compact('page_title','page_description', 'categories', 'vats'))->with('products', $products);
     }
 
     /**
@@ -128,7 +139,7 @@ class ProductsController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        $products = $this->productsRepository->updateWithImagesAndCategories($request->all(), $id);
+        $products = $this->productsRepository->updateWithRelationships($request->all(), $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/products.singular')]));
 

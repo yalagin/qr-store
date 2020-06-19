@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->text('minor_description')->nullable();
             $table->smallInteger('main_product', false, true);
             $table->string('price');
-            $table->string('vat_code');
             $table->smallInteger('active', false, true);
             $table->smallInteger('sold_out', false, true);
             $table->string('ean')->nullable();

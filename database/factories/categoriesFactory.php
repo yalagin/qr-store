@@ -10,9 +10,9 @@ $factory->define(categories::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'description' => $faker->text,
-        'active' => $faker->randomDigitNotNull,
-        'excluding_discounts' => $faker->randomDigitNotNull,
-        'product_remark' => $faker->randomDigitNotNull,
+        'active' => $faker->boolean,
+        'excluding_discounts' => $faker->boolean,
+        'product_remark' => $faker->boolean,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')
     ];

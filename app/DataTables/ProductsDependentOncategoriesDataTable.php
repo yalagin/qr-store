@@ -19,7 +19,7 @@ class ProductsDependentOncategoriesDataTable extends ProductsDataTable
      */
     public function query(Products $model)
     {
-        return $model->newQuery()->whereHas('categories', function ($query) {
+        return $model->with('vat')->newQuery()->whereHas('categories', function ($query) {
             $query->where('id', $this->category );
         });
     }

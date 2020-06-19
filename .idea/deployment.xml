@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Plesk" createEmptyFolders="true" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc;.env;*.env" preserveFilePermissions="true" showNewOnSourceInSync="false">
+  <component name="PublishConfigData" serverName="Plesk" createEmptyFolders="true" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc;.env;*.env" preserveFilePermissions="true" showNewOnSourceInSync="false">
     <serverData>
       <paths name="Plesk">
         <serverdata>
@@ -33,6 +33,5 @@
         </serverdata>
       </paths>
     </serverData>
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

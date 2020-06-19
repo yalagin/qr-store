@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\categories;
 use App\Models\image;
 use App\Models\Products;
+use App\Models\Vat;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 
@@ -62,23 +63,25 @@ class ProductsRepository extends BaseRepository
      *
      * @return Model
      */
-    public function createWithImagesAndCategories($input)
+    public function createWithRelationships($input)
     {
-        list($categories, $input) = $this->getRelatedFields($input);
+        list($vat, $categories, $input) = $this->getRelatedFields($input);
         /** @var products $model */
         $model =  $this->createWithImages($input);
         $model->categories()->sync($categories);
-
+        $model->vat()->associate($vat);
+        $model->save();
         return $model;
     }
 
-    public function updateWithImagesAndCategories(array $input, int $id)
+    public function updateWithRelationships(array $input, int $id)
     {
-        list($categories, $input) = $this->getRelatedFields($input);
+        list($vat, $categories, $input) = $this->getRelatedFields($input);
         /** @var products $model */
         $model = $this->updateWithImages($input,$id);
         $model->categories()->sync($categories);
-
+        $model->vat()->associate($vat);
+        $model->save();
         return $model;
     }
 
@@ -91,8 +94,11 @@ class ProductsRepository extends BaseRepository
         $categories = [];
         if (isset($input["categories"])) {
             $categories = $input["categories"];
-            unset($input["categories"]);
         }
-        return array($categories, $input);
+        $vat = null;
+        if (isset($input["vat"])) {
+            $vat = $input['vat'];
+        }
+        return array($vat,$categories, $input);
     }
 }

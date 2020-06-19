@@ -46,11 +46,49 @@
     {!! Form::number('price', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Vat Code Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('vat_code', __('models/products.fields.vat_code').':') !!}
-    {!! Form::number('vat_code', null, ['class' => 'form-control']) !!}
-</div>
+{{--<!-- Vat Code Field -->--}}
+{{--<div class="form-group col-sm-6">--}}
+
+{{--    {!! Form::number('vat_code', null, ['class' => 'form-control']) !!}--}}
+{{--</div>--}}
+
+@if($vats && ! $vats->isEmpty())
+    <div class="form-group   col-sm-6">
+        {!! Form::label('vat_code', __('models/products.fields.vat_code').':') !!}
+        <label>
+            <select  class="form-control selectpicker"  data-actions-box="true" name="vat">
+                @foreach($vats as $vat)
+                    <option value="{{$vat->id}}"
+                            @if(isset($products) && $products->vat &&$vat->id === $products->vat->id)
+                            selected="selected"
+                        @endif
+                    >
+                        {{$vat->code}}
+                    </option>
+                @endforeach
+            </select>
+        </label>
+    </div>
+@endif
+
+{{--@if($categories && ! $categories->isEmpty())--}}
+{{--    <div class="form-group   col-sm-6">--}}
+{{--        {{Form::label('products', 'Select/deselect Categories',['class'=>'col-form-label text-left '])}}--}}
+{{--        <label>--}}
+{{--            <select  class="form-control selectpicker" multiple="multiple" data-actions-box="true" name="categories[]">--}}
+{{--                @foreach($categories as $category)--}}
+{{--                    <option value="{{$category->id}}"--}}
+{{--                            @if(isset($products) && in_array($category->id, $products->categories->map(function ($item) {return $item->id;})->toArray()))--}}
+{{--                            selected="selected"--}}
+{{--                        @endif--}}
+{{--                    >--}}
+{{--                        {{$category->name}}--}}
+{{--                    </option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--        </label>--}}
+{{--    </div>--}}
+{{--@endif--}}
 
 <!-- 'bootstrap / Toggle Switch Active Field' -->
 <div class="form-group col-sm-6">

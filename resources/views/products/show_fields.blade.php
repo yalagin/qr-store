@@ -41,11 +41,12 @@
 </div>
 
 <!-- Vat Code Field -->
+@if($products->vat)
 <div class="form-group">
     {!! Form::label('vat_code', __('models/products.fields.vat_code').':') !!}
-    <p>{{ $products->vat_code }}</p>
+    <p>{{ $products->vat->code?? ""}}</p>
 </div>
-
+@endif
 <!-- Active Field -->
 <div class="form-group">
     {!! Form::label('active', __('models/products.fields.active').':') !!}
@@ -100,3 +101,11 @@
     <p>{{ $products->updated_at }}</p>
 </div>
 
+@if($products->categories())
+    <div class="form-group">
+        {!! Form::label('updated_at', __('models/categories.plural').':') !!}
+        @foreach( $products->categories as $category)
+        <p>{{ $category->name }}</p>
+        @endforeach
+    </div>
+@endif

@@ -66,5 +66,4 @@ return [
         '__',
         '$trans.get',
     ],
-
 ];

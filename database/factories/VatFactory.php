@@ -11,8 +11,8 @@ $factory->define(Vat::class, function (Faker $faker) {
         'code' => $faker->word,
         'Description' => $faker->text,
         'Percentage' => $faker->word,
-        'is_sales' => $faker->randomDigitNotNull,
-        'is_purchase' => $faker->randomDigitNotNull,
+        'is_sales' => $faker->boolean,
+        'is_purchase' => $faker->boolean,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')
     ];

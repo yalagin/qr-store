@@ -18,7 +18,6 @@ class ProductsDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-
         return $dataTable->addColumn('action', 'products.datatables_actions');
     }
 
@@ -30,7 +29,7 @@ class ProductsDataTable extends DataTable
      */
     public function query(Products $model)
     {
-        return $model->newQuery();
+        return $model::with('vat');
     }
 
     /**
@@ -47,7 +46,7 @@ class ProductsDataTable extends DataTable
             ->parameters([
                 'dom'       => 'Bfrtipl',
                 'stateSave' => true,
-                'order'     => [[0, 'desc']],
+//                'order'     => [[15, 'desc']],
                 'buttons'   => [
                     [
                        'extend' => 'create',
@@ -104,22 +103,23 @@ class ProductsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => new Column(['title' => __('models/products.fields.id'), 'data' => 'id']),
+//            'id' => new Column(['title' => __('models/products.fields.id'), 'data' => 'id']),
             'article_number' => new Column(['title' => __('models/products.fields.article_number'), 'data' => 'article_number']),
             'name' => new Column(['title' => __('models/products.fields.name'), 'data' => 'name']),
-            'main_description' => new Column(['title' => __('models/products.fields.main_description'), 'data' => 'main_description']),
-            'additional_description' => new Column(['title' => __('models/products.fields.additional_description'), 'data' => 'additional_description']),
-            'minor_description' => new Column(['title' => __('models/products.fields.minor_description'), 'data' => 'minor_description']),
+//            'main_description' => new Column(['title' => __('models/products.fields.main_description'), 'data' => 'main_description']),
+//            'additional_description' => new Column(['title' => __('models/products.fields.additional_description'), 'data' => 'additional_description']),
+//            'minor_description' => new Column(['title' => __('models/products.fields.minor_description'), 'data' => 'minor_description']),
             'main_product' => new Column(['title' => __('models/products.fields.main_product'), 'data' => 'main_product']),
             'price' => new Column(['title' => __('models/products.fields.price'), 'data' => 'price']),
-            'vat_code' => new Column(['title' => __('models/products.fields.vat_code'), 'data' => 'vat_code']),
+            'vat_code' => new Column(['title' => __('models/products.fields.vat_code'), 'data' => 'vat.code']),
             'active' => new Column(['title' => __('models/products.fields.active'), 'data' => 'active']),
             'sold_out' => new Column(['title' => __('models/products.fields.sold_out'), 'data' => 'sold_out']),
-            'ean' => new Column(['title' => __('models/products.fields.ean'), 'data' => 'ean']),
-            'is_receipt' => new Column(['title' => __('models/products.fields.is_receipt'), 'data' => 'is_receipt']),
-            'is_kitchen' => new Column(['title' => __('models/products.fields.is_kitchen'), 'data' => 'is_kitchen']),
-            'is_sticker' => new Column(['title' => __('models/products.fields.is_sticker'), 'data' => 'is_sticker']),
-            'is_deal' => new Column(['title' => __('models/products.fields.is_deal'), 'data' => 'is_deal'])
+//            'ean' => new Column(['title' => __('models/products.fields.ean'), 'data' => 'ean']),
+//            'is_receipt' => new Column(['title' => __('models/products.fields.is_receipt'), 'data' => 'is_receipt']),
+//            'is_kitchen' => new Column(['title' => __('models/products.fields.is_kitchen'), 'data' => 'is_kitchen']),
+//            'is_sticker' => new Column(['title' => __('models/products.fields.is_sticker'), 'data' => 'is_sticker']),
+//            'is_deal' => new Column(['title' => __('models/products.fields.is_deal'), 'data' => 'is_deal']),
+//            'updated_at' => new Column(['title' => __('models/products.fields.updated_at'), 'data' => 'updated_at'])
         ];
     }
 

@@ -15,7 +15,10 @@ class AddArticleNumberToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('article_number')->after('id');
+            $table->string('article_number')->after('id')->unique();
+            $table->integer('vat_id')->unsigned()->nullable();
+            $table->foreign('vat_id')->references('id')->on('vats')
+                ->onDelete('cascade');
         });
     }
 

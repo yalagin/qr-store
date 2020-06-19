@@ -23,10 +23,10 @@ class UpdateProductsRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Products $id )
     {
         $rules = Products::$rules;
-        
+        $rules['article_number']='required|unique:products,article_number,'.$this->route('product');
         return $rules;
     }
 }

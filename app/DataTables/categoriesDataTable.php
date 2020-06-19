@@ -104,7 +104,7 @@ class categoriesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => new Column(['title' => __('models/categories.fields.id'), 'data' => 'id']),
+//            'id' => new Column(['title' => __('models/categories.fields.id'), 'data' => 'id']),
             'name' => new Column(['title' => __('models/categories.fields.name'), 'data' => 'name']),
             'description' => new Column(['title' => __('models/categories.fields.description'), 'data' => 'description']),
             'active' => new Column(['title' => __('models/categories.fields.active'), 'data' => 'active']),

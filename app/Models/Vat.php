@@ -100,4 +100,9 @@ class Vat extends Model
         'Description' => 'required',
         'Percentage' => 'required'
     ];
+
+    public function products()
+    {
+        return $this->hasMany('App\Products');
+    }
 }
